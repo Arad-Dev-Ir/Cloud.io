@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj" />
+		<ProjectReference Include="..\KeywordsManagement.Data.Sql\KeywordsManagement.Data.Sql.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Data\Setup\Models\Keyword\Configuration\" />
+		<Folder Include="Data\Setup\Models\Keyword\Conversion\" />
+	</ItemGroup>
+
+</Project>

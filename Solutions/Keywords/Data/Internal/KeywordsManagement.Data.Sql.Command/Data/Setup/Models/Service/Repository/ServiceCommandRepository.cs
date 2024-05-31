@@ -5,8 +5,8 @@ using Core.NewsService.Contracts;
 using Sql.Commands;
 using Service = Core.NewsService.Models.NewsService;
 
-public class ServiceCommandRepository : CommandRepository<BasicInformationCommandContext, Service>, INewsServiceCommandRepository
+public class ServiceCommandRepository : CommandRepository<KeywordsManagementCommandContext, Service>, INewsServiceCommandRepository
 {
-    public ServiceCommandRepository(BasicInformationCommandContext context) : base(context)
+    public ServiceCommandRepository(KeywordsManagementCommandContext context) : base(context)
     { }
 }

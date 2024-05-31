@@ -2,8 +2,8 @@
 
 using Cloud.Web.Data.Sql.Command;
 
-public class BasicInformationUnitOfWork : UnitOfWork<BasicInformationCommandContext>
+public class BasicInformationUnitOfWork : UnitOfWork<KeywordsManagementCommandContext>
 {
-    public BasicInformationUnitOfWork(BasicInformationCommandContext context) : base(context)
+    public BasicInformationUnitOfWork(KeywordsManagementCommandContext context) : base(context)
     { }
 }
