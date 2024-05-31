@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.ResponseCompression;
-//using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Client;
 using Cloud.Core.Extensions.Caching;
 using Cloud.Core.Extensions.Serialization;
 using Cloud.Core.Extensions.Identity;
@@ -28,7 +28,7 @@ public static class Extension
         .AddMicrosoftSerializer()
         .AddInMemoryCache()
         .AddDbContext(configuration)
-        //.AddDiscoveryClient(configuration)
+        .AddDiscoveryClient(configuration)
         //.AddHostedService<KeywordCreationEventPublisher>()
         .AddResponseCompression()
         .AddSwaggerGen();
