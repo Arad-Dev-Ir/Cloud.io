@@ -1,0 +1,31 @@
+@baseUrl = https://localhost:7001/api/keyword
+
+POST {{baseUrl}}/define-keyword
+Content-Type: application/json
+
+{
+    "Title": "Cloud Computing"
+}
+
+###
+
+Get {{baseUrl}}/search?title=Cloud
+
+###
+
+PATCH {{baseUrl}}/edit-keyword-title
+Content-Type: application/json
+
+{
+    "Id": "3",
+    "Title": "Art"
+}
+
+###
+
+POST {{baseUrl}}/activate-keyword
+Content-Type: application/json
+
+{
+    "Id": 1
+}
