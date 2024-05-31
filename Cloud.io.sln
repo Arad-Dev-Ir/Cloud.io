@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeywordsManagement.Core.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.Contract", "Solutions\Keywords\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj", "{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.AppService", "Solutions\Keywords\Core\KeywordsManagement.Core.AppService\KeywordsManagement.Core.AppService.csproj", "{EAD6223E-D243-4435-98FD-81FB15CDE50E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD6223E-D243-4435-98FD-81FB15CDE50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD6223E-D243-4435-98FD-81FB15CDE50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD6223E-D243-4435-98FD-81FB15CDE50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD6223E-D243-4435-98FD-81FB15CDE50E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{45FB81C6-47B9-423E-81B1-33BD594EF3FD} = {CFE20AD7-5FA8-4355-85CC-EF63C7596127}
 		{6746409C-585D-4A2B-AAB1-EB9818D77746} = {2AAFFC91-AC03-462D-A3FE-9EAB485B51E3}
 		{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A} = {2AAFFC91-AC03-462D-A3FE-9EAB485B51E3}
+		{EAD6223E-D243-4435-98FD-81FB15CDE50E} = {2AAFFC91-AC03-462D-A3FE-9EAB485B51E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765B41DE-A134-486F-88EE-A50B02E39A70}
