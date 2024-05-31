@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Data\Setup\Models\Keyword\Class\" />
+		<Folder Include="Data\Setup\Models\Service\Class\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj" />
+		<ProjectReference Include="..\..\..\Core\KeywordsManagement.Core.Domain\KeywordsManagement.Core.Domain.csproj" />
+		<ProjectReference Include="..\KeywordsManagement.Data.Sql\KeywordsManagement.Data.Sql.csproj" />
+	</ItemGroup>
+
+</Project>
