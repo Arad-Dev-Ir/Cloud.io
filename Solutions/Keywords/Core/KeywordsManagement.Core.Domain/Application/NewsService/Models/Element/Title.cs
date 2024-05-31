@@ -1,4 +1,4 @@
-﻿namespace BasicInformation.Core.NewsService.Models;
+﻿namespace KeywordsManagement.Core.NewsService.Models;
 
 using Cloud.Core;
 using Cloud.Core.Models;
