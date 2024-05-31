@@ -12,7 +12,7 @@ using Cloud.Web.Endpoint.API;
 using System.IO.Compression;
 using Data.Sql.Commands;
 using Data.Sql.Queries;
-//using KeywordsManagement.Endpoint.Keyword.APIs;
+//using Keyword.APIs;
 
 public static class Extension
 {
@@ -28,7 +28,7 @@ public static class Extension
         .AddMicrosoftSerializer()
         .AddInMemoryCache()
         .AddDbContext(configuration)
-        .AddDiscoveryClient(configuration)
+        //.AddDiscoveryClient(configuration)
         //.AddHostedService<KeywordCreationEventPublisher>()
         .AddResponseCompression()
         .AddSwaggerGen();

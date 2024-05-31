@@ -7,14 +7,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Data\Setup\Models\Keyword\Class\" />
-		<Folder Include="Data\Setup\Models\Service\Class\" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj" />
 		<ProjectReference Include="..\..\..\Core\KeywordsManagement.Core.Domain\KeywordsManagement.Core.Domain.csproj" />
 		<ProjectReference Include="..\KeywordsManagement.Data.Sql\KeywordsManagement.Data.Sql.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Data\Setup\Models\Keyword\Class\" />
+		<Folder Include="Data\Setup\Models\Service\Class\" />
 	</ItemGroup>
 
 </Project>
