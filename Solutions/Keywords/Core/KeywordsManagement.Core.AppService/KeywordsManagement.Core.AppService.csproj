@@ -12,4 +12,8 @@
 		<ProjectReference Include="..\KeywordsManagement.Core.Domain\KeywordsManagement.Core.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Application\Models\NewsService\AppService\Queries\" />
+	</ItemGroup>
+
 </Project>
