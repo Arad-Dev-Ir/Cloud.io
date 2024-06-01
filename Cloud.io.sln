@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Endpoint", "Endpoint", "{71
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Core.Domain", "Solutions\News\src\Core\NewsManagement.Core.Domain\NewsManagement.Core.Domain.csproj", "{7CF76148-E665-49C2-960A-C295E78D6F7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Core.Contract", "Solutions\News\src\Core\NewsManagement.Core.Contract\NewsManagement.Core.Contract.csproj", "{AB1FA244-783B-4D80-B739-BB490392B835}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{7CF76148-E665-49C2-960A-C295E78D6F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF76148-E665-49C2-960A-C295E78D6F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF76148-E665-49C2-960A-C295E78D6F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB1FA244-783B-4D80-B739-BB490392B835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB1FA244-783B-4D80-B739-BB490392B835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB1FA244-783B-4D80-B739-BB490392B835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB1FA244-783B-4D80-B739-BB490392B835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +129,7 @@ Global
 		{0FF28FE5-C742-4145-BE9E-7D2D1ED1FCF6} = {C437E022-CD24-44A8-A42C-2C2D192F7CEF}
 		{713B31D7-A160-4B41-88D3-7DE47C12ADA8} = {C437E022-CD24-44A8-A42C-2C2D192F7CEF}
 		{7CF76148-E665-49C2-960A-C295E78D6F7D} = {944E7E37-CB73-4FCB-8864-84C9E819B9C5}
+		{AB1FA244-783B-4D80-B739-BB490392B835} = {944E7E37-CB73-4FCB-8864-84C9E819B9C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765B41DE-A134-486F-88EE-A50B02E39A70}
