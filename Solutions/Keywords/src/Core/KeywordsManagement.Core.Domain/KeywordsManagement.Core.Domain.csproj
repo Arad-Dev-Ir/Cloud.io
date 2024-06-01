@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\Shared\Cloud.AspNetCore.App\Cloud.AspNetCore.App.csproj" />
+		<ProjectReference Include="..\..\..\..\..\Shared\Cloud.AspNetCore.App\Cloud.AspNetCore.App.csproj" />
 	</ItemGroup>
 
 </Project>

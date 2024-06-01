@@ -25,19 +25,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{DC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{45FB81C6-47B9-423E-81B1-33BD594EF3FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeywordsManagement.Core.Domain", "Solutions\Keywords\Core\KeywordsManagement.Core.Domain\KeywordsManagement.Core.Domain.csproj", "{6746409C-585D-4A2B-AAB1-EB9818D77746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeywordsManagement.Core.Domain", "Solutions\Keywords\src\Core\KeywordsManagement.Core.Domain\KeywordsManagement.Core.Domain.csproj", "{6746409C-585D-4A2B-AAB1-EB9818D77746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.Contract", "Solutions\Keywords\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj", "{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.Contract", "Solutions\Keywords\src\Core\KeywordsManagement.Core.Contract\KeywordsManagement.Core.Contract.csproj", "{E0EF1781-7CB4-4AB3-9C9C-00E21E90AF6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.AppService", "Solutions\Keywords\Core\KeywordsManagement.Core.AppService\KeywordsManagement.Core.AppService.csproj", "{EAD6223E-D243-4435-98FD-81FB15CDE50E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Core.AppService", "Solutions\Keywords\src\Core\KeywordsManagement.Core.AppService\KeywordsManagement.Core.AppService.csproj", "{EAD6223E-D243-4435-98FD-81FB15CDE50E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql", "Solutions\Keywords\Data\Internal\KeywordsManagement.Data.Sql\KeywordsManagement.Data.Sql.csproj", "{DC5CD886-D99B-4266-9446-DECE6C1DD992}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql", "Solutions\Keywords\src\Data\Internal\KeywordsManagement.Data.Sql\KeywordsManagement.Data.Sql.csproj", "{DC5CD886-D99B-4266-9446-DECE6C1DD992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql.Command", "Solutions\Keywords\Data\Internal\KeywordsManagement.Data.Sql.Command\KeywordsManagement.Data.Sql.Command.csproj", "{A6F74B7D-53E5-4C5D-8E47-6C2099406EFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql.Command", "Solutions\Keywords\src\Data\Internal\KeywordsManagement.Data.Sql.Command\KeywordsManagement.Data.Sql.Command.csproj", "{A6F74B7D-53E5-4C5D-8E47-6C2099406EFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql.Query", "Solutions\Keywords\Data\Internal\KeywordsManagement.Data.Sql.Query\KeywordsManagement.Data.Sql.Query.csproj", "{AE56A656-35F1-4EE0-91AB-C91BA42C35E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Data.Sql.Query", "Solutions\Keywords\src\Data\Internal\KeywordsManagement.Data.Sql.Query\KeywordsManagement.Data.Sql.Query.csproj", "{AE56A656-35F1-4EE0-91AB-C91BA42C35E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Endpoint.API", "Solutions\Keywords\Endpoint\KeywordsManagement.Endpoint.API\KeywordsManagement.Endpoint.API.csproj", "{34A097E5-5537-4D8C-89E7-7D7357C3ADD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordsManagement.Endpoint.API", "Solutions\Keywords\src\Endpoint\KeywordsManagement.Endpoint.API\KeywordsManagement.Endpoint.API.csproj", "{34A097E5-5537-4D8C-89E7-7D7357C3ADD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
