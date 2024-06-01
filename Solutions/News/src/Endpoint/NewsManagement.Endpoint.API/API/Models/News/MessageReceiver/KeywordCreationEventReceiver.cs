@@ -25,7 +25,7 @@ public class KeywordCreationEventReceiver : BackgroundService
         var exchangeName = "Cloudio";
         model.ExchangeDeclare(exchangeName, ExchangeType.Topic, false, true, null);
 
-        var key = $"{exchangeName}.BasicInformation.Event.KeywordCreated";
+        var key = $"{exchangeName}.KeywordsManagement.Event.KeywordCreated";
         model.QueueBind(queue, exchangeName, key, null);
 
         _sqlConnection = new SqlConnection("Server =.\\DEVELOP; Initial Catalog = NewsManagement_Db; Persist Security Info = True; User Id = sa; Password = 13680805; Trust Server Certificate = true; MultipleActiveResultSets = true; Encrypt = false");
