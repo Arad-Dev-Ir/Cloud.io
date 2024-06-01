@@ -1,0 +1,20 @@
+@baseUrl = https://localhost:7011/api/news
+
+POST {{baseUrl}}/register-news
+Content-Type: application/json
+
+{
+    "Title": "About Cloud Computing1",
+    "Description": "The Cloud Ecosystem",
+    "Body": "Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. Large clouds often have functions distributed over multiple locations.",
+    "KeywordsCodes":
+    [
+        "C11D380E-F9BA-42B3-872C-08E436833"
+    ]
+}
+
+###
+
+@id = 1
+GET {{baseUrl}}/get-news-detail/{{id}}
+Content-Type: application/json

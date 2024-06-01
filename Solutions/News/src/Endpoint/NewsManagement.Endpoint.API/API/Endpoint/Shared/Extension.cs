@@ -1,27 +1,28 @@
-﻿namespace KeywordsManagement.Endpoint.APIs;
+﻿namespace NewsManagement.Endpoint.APIs;
 
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.ResponseCompression;
-using Steeltoe.Discovery.Client;
-using Cloud.Core.Extensions.Caching;
+//using Steeltoe.Discovery.Client;
 using Cloud.Core.Extensions.Serialization;
+using Cloud.Core.Extensions.Caching;
 using Cloud.Core.Extensions.Identity;
 using Cloud.Web.Data.Sql.Command;
 using Cloud.Web.Endpoint.API;
 using System.IO.Compression;
 using Data.Sql.Commands;
 using Data.Sql.Queries;
-//using Keyword.APIs;
+using Endpoint.News.APIs;
 
 public static class Extension
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder source)
     {
         var result = default(WebApplication);
-        var configuration = source.Configuration;
 
-        source.Services.AddApiConfiguration(["Cloud", "KeywordsManagement"])
+        var configuration = source.Configuration;
+        source.Services.AddApiConfiguration(["Cloud", "NewsManagement"])
         .AddEndpointsApiExplorer()
         .AddHttpContextAccessor()
         .AddUserIdentity(e => configuration.GetSection("WebUserInfo").Bind(e))
@@ -29,7 +30,7 @@ public static class Extension
         .AddInMemoryCache()
         .AddDbContext(configuration)
         //.AddDiscoveryClient(configuration)
-        //.AddHostedService<KeywordCreationEventPublisher>()
+        //.AddHostedService<KeywordCreationEventReceiver>()
         .AddResponseCompression()
         .AddSwaggerGen();
 
@@ -39,7 +40,6 @@ public static class Extension
 
     public static WebApplication ConfigurePipelines(this WebApplication source)
     {
-        var result = default(WebApplication);
         source.UseApiException();
         if (source.Environment.IsDevelopment())
         {
@@ -52,22 +52,21 @@ public static class Extension
         source.MapControllers();
         source.UseResponseCompression();
         source.MigrateDatabase();
-        result = source;
-        return result;
+        return source;
     }
 
     #region Private
 
     private static IServiceCollection AddDbContext(this IServiceCollection source, IConfiguration configuration)
     {
-        source.AddDbContext<KeywordsManagementCommandContext>(e =>
-        e.UseSqlServer(configuration.GetConnectionString("KeywordsManagementCommandDb_ConnectionString"))
+        source.AddDbContext<NewsManagementCommandContext>(e =>
+        e.UseSqlServer(configuration.GetConnectionString("NewsManagementCommandDb_ConnectionString"))
         .AddInterceptors(new OutboxEventInterceptor())
         .SetDatabaseOptions()
         );
 
-        source.AddDbContext<KeywordsManagementQueryContext>(e =>
-        e.UseSqlServer(configuration.GetConnectionString("KeywordsManagementQueryDb_ConnectionString"))
+        source.AddDbContext<NewsManagementQueryContext>(e =>
+        e.UseSqlServer(configuration.GetConnectionString("NewsManagementQueryDb_ConnectionString"))
         .SetDatabaseOptions()
         );
         return source;
@@ -87,7 +86,7 @@ public static class Extension
         return source;
     }
 
-    private static WebApplication UseCorsPolicy(this WebApplication source)
+    private static IApplicationBuilder UseCorsPolicy(this WebApplication source)
     {
         source.UseCors(delegate (CorsPolicyBuilder builder)
         {
@@ -95,15 +94,14 @@ public static class Extension
             builder.AllowAnyHeader();
             builder.AllowAnyMethod();
         });
-        var result = source;
-        return result;
+        return source;
     }
 
     private static async void MigrateDatabase(this WebApplication app)
     {
         using var scope = app.Services.CreateScope();
         await scope.ServiceProvider
-        .GetRequiredService<KeywordsManagementCommandContext>()
+        .GetRequiredService<NewsManagementCommandContext>()
         .Database
         .MigrateAsync();
     }
