@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\..\..\Shared\Cloud.AspNetCore.App\Cloud.AspNetCore.App.csproj" />
 		<ProjectReference Include="..\..\..\Core\NewsManagement.Core.Contract\NewsManagement.Core.Contract.csproj" />
 		<ProjectReference Include="..\..\..\Core\NewsManagement.Core.Domain\NewsManagement.Core.Domain.csproj" />
@@ -14,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Data\Setup\Models\News\Class\" />
+		<Folder Include="Data\Setup\Models\News\Class\" />
 	</ItemGroup>
 
 </Project>
