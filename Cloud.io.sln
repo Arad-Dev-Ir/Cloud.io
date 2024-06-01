@@ -57,6 +57,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Core.Contrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Core.AppService", "Solutions\News\src\Core\NewsManagement.Core.AppService\NewsManagement.Core.AppService.csproj", "{3F3A4018-0FF6-4CCF-8635-E5E35DF96546}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{22C60D6E-4E5B-456C-B49F-A65CA81764D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{F153404B-C788-44EA-A5AE-DF2C2405B62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Data.Sql", "Solutions\News\src\Data\Internal\NewsManagement.Data.Sql\NewsManagement.Data.Sql.csproj", "{5DE2D6D3-C354-4FF3-8ADE-164BC4619001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsManagement.Data.Sql.Command", "Solutions\News\src\Data\Internal\NewsManagement.Data.Sql.Command\NewsManagement.Data.Sql.Command.csproj", "{5A571061-293E-41F6-B181-85BDCB6C265A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +115,14 @@ Global
 		{3F3A4018-0FF6-4CCF-8635-E5E35DF96546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F3A4018-0FF6-4CCF-8635-E5E35DF96546}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F3A4018-0FF6-4CCF-8635-E5E35DF96546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE2D6D3-C354-4FF3-8ADE-164BC4619001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE2D6D3-C354-4FF3-8ADE-164BC4619001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE2D6D3-C354-4FF3-8ADE-164BC4619001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE2D6D3-C354-4FF3-8ADE-164BC4619001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A571061-293E-41F6-B181-85BDCB6C265A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A571061-293E-41F6-B181-85BDCB6C265A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A571061-293E-41F6-B181-85BDCB6C265A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A571061-293E-41F6-B181-85BDCB6C265A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +153,10 @@ Global
 		{7CF76148-E665-49C2-960A-C295E78D6F7D} = {944E7E37-CB73-4FCB-8864-84C9E819B9C5}
 		{AB1FA244-783B-4D80-B739-BB490392B835} = {944E7E37-CB73-4FCB-8864-84C9E819B9C5}
 		{3F3A4018-0FF6-4CCF-8635-E5E35DF96546} = {944E7E37-CB73-4FCB-8864-84C9E819B9C5}
+		{22C60D6E-4E5B-456C-B49F-A65CA81764D2} = {0FF28FE5-C742-4145-BE9E-7D2D1ED1FCF6}
+		{F153404B-C788-44EA-A5AE-DF2C2405B62C} = {0FF28FE5-C742-4145-BE9E-7D2D1ED1FCF6}
+		{5DE2D6D3-C354-4FF3-8ADE-164BC4619001} = {F153404B-C788-44EA-A5AE-DF2C2405B62C}
+		{5A571061-293E-41F6-B181-85BDCB6C265A} = {F153404B-C788-44EA-A5AE-DF2C2405B62C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765B41DE-A134-486F-88EE-A50B02E39A70}
