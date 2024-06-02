@@ -1,0 +1,17 @@
+@baseUrl = https://localhost:8001
+
+POST {{baseUrl}}/km/api/keyword/define-keyword
+Content-Type: application/json
+
+{
+    "Title": "Security" 
+}
+
+###
+
+Get {{baseUrl}}/km/api/keyword/search?title=Security
+
+###
+@id = 1
+GET {{baseUrl}}/nm/api/news/get-news-detail/{{id}}
+Content-Type: application/json
