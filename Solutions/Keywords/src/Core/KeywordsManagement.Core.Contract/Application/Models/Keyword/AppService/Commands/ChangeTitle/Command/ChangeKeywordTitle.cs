@@ -2,8 +2,4 @@
 
 using Cloud.Web.Core.Contract;
 
-public class ChangeKeywordTitle : Command
-{
-    public long Id { get; set; }
-    public string Title { get; set; } = Empty;
-}
+public record ChangeKeywordTitle(long Id, string Title) : Command;

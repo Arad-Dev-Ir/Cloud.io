@@ -2,7 +2,4 @@
 
 using Cloud.Web.Core.Contract;
 
-public class ActivateKeyword : Command
-{
-    public long Id { get; set; }
-}
+public record ActivateKeyword(long Id) : Command;

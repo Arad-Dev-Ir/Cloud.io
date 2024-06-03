@@ -2,7 +2,4 @@
 
 using Cloud.Web.Core.Contract;
 
-public class CreateKeyword : Command<long>
-{
-    public string Title { get; set; } = Empty;
-}
+public record CreateKeyword(string Title) : Command<long>;

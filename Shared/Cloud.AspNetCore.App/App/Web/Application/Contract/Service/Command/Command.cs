@@ -4,11 +4,11 @@ using Cloud.Core.Models;
 
 public interface ICommand : IRequest
 { }
-public class Command : Model, ICommand
+public record Command : TransferModel, ICommand
 { }
 
 
 public interface ICommand<D> : ICommand
 { }
-public class Command<D> : Model, ICommand<D>
+public record Command<D> : TransferModel, ICommand<D>
 { }

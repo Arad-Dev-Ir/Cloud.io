@@ -2,10 +2,10 @@
 
 using Cloud.Core.Models;
 
-public class TitleAndModeSearchResult : Model
+public record TitleAndModeSearchResult : TransferModel
 {
     public long Id { get; set; }
     public Guid Code { get; set; }
-    public string Title { get; set; } = Empty;
-    public string Mode { get; set; } = Empty;
+    public string Title { get; set; }
+    public string Mode { get; set; }
 }

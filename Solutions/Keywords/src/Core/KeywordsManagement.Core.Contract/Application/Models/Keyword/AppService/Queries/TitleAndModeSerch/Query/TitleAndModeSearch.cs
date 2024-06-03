@@ -2,8 +2,4 @@
 
 using Cloud.Web.Core.Contract;
 
-public class TitleAndModeSearch : PageQuery<PagedData<TitleAndModeSearchResult>>
-{
-    public string Title { get; set; } = Empty;
-    public string? Mode { get; set; } = Empty;
-}
+public record TitleAndModeSearch(string Title, string? Mode) : PageQuery<PagedData<TitleAndModeSearchResult>>;

@@ -4,7 +4,7 @@ POST {{baseUrl}}/define-keyword
 Content-Type: application/json
 
 {
-    "Title": "Cloud Computing"
+    "Title": "Network"
 }
 
 ###

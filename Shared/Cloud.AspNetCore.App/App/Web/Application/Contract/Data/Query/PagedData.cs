@@ -3,7 +3,7 @@
 using static Math;
 using Cloud.Core.Models;
 
-public class PagedData<T> where T : Model, new()
+public record PagedData<T> where T : TransferModel, new()
 {
     public List<T> Records { get; set; } = [];
     public int Page { get; set; }
