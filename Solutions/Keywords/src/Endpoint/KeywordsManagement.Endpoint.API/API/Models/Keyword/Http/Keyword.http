@@ -27,5 +27,5 @@ POST {{baseUrl}}/activate-keyword
 Content-Type: application/json
 
 {
-    "Id": 1
+    "Id": 5
 }

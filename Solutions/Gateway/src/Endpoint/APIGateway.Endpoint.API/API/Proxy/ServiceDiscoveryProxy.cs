@@ -43,8 +43,8 @@ public class ServiceDiscoveryProxy : BackgroundService, IProxyConfigProvider
         {
             new RouteConfig()
             {
-               RouteId = "Route-BasicInformation",
-               ClusterId = "Cluster-BasicInformation",
+               RouteId = "Route-KeywordsManagement",
+               ClusterId = "Cluster-KeywordsManagement",
                Match = new() { Path = "km/{**catch-all}" },
                Transforms = new List<Dictionary<string, string>>()
                 {
