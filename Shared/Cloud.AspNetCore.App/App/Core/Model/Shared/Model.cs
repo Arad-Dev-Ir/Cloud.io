@@ -8,7 +8,7 @@ public abstract class Model : Atom
 
     protected object? CallMethod(string name, Type type, object?[] parameters)
     {
-        var method = GetType().GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic, new Type[] { type });
+        var method = GetType().GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic, [type]);
         var result = method?.Invoke(this, parameters);
         return result;
     }
@@ -16,3 +16,6 @@ public abstract class Model : Atom
     protected static bool OnEqual(object? a, object? b)
     => ReferenceEquals(a, b);
 }
+
+
+public abstract record TransferModel() : Object;
