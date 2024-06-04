@@ -32,7 +32,7 @@ public class NewsService : Module
     #region Methods
 
     private void OnCreateService()
-    => AddEvent(new ServiceCreated(Code, Title, Name));
+    => AddEvent(new ServiceCreated(Code.Value, Title.Value, Name.Value));
 
     #endregion
 }

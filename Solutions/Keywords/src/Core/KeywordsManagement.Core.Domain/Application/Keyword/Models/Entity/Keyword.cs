@@ -78,16 +78,16 @@ public class Keyword : Module
     }
 
     private void OnCreateKeyword()
-    => AddEvent(KeywordCreated.Instance(Code, Title));
+    => AddEvent(new KeywordCreated(Code.Value, Title.Value));
 
     private void OnChangeKeywordTitle()
-    => AddEvent(KeywordTitleChanged.Instance(Code, Title));
+    => AddEvent(new KeywordTitleChanged(Code.Value, Title.Value));
 
     private void OnActivateKeyword()
-    => AddEvent(KeywordActivated.Instance(Code, Title));
+       => AddEvent(new KeywordActivated(Code.Value, Title.Value));
 
     private void OnDeactivateKeyword()
-    => AddEvent(KeywordDeactivated.Instance(Code, Title));
+    => AddEvent(new KeywordDeactivated(Code.Value, Title.Value));
 
     #endregion
 }

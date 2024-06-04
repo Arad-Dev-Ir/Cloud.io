@@ -38,7 +38,10 @@ public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryCon
             Mode = e.Mode,
         })
         .ToListAsync();
+
+        var a = result.GetHashCode();
         result.TotalCount = query.NeedTotalCount ? lookup.Count() : default;
+        var b = result.GetHashCode();
 
         return result;
     }

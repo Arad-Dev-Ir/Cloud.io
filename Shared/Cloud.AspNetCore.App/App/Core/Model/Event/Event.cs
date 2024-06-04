@@ -1,9 +1,7 @@
 ﻿namespace Cloud.Core.Models;
 
-using Cloud.Core;
-
 public interface IEvent
 { }
 
-public class Event : Model, IEvent
+public record Event : TransferModel, IEvent
 { }

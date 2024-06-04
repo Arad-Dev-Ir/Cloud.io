@@ -40,7 +40,7 @@ public class News : Module
     #region Methods
 
     private void OnCreateBlog(Title title, Description description, Body body, IEnumerable<Keyword> keywords)
-    => AddEvent(NewsCreated.Instance(Code, title, description, body, keywords));
+    => AddEvent(new NewsCreated(Code.Value, title.Value, description.Value, body.Value, keywords.Select(e => e.KeywordCode.ToString()).ToList()));
 
     #endregion
 }
