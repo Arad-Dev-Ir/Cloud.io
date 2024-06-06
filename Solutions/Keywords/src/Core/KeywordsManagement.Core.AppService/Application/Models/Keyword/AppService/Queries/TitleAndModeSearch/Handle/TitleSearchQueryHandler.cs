@@ -11,9 +11,9 @@ public class TitleSearchQueryHandler : QueryHandler<TitleAndModeSearch, PagedDat
     public TitleSearchQueryHandler(IKeywordQueryRepository repo)
     => _repo = repo;
 
-    public override async Task<QueryResponse<PagedData<TitleAndModeSearchResult>>> ExecuteAsync(TitleAndModeSearch query)
+    public override async Task<QueryResponse<PagedData<TitleAndModeSearchResult>>> ExecuteAsync(TitleAndModeSearch query, CancellationToken cancellationToken)
     {
-        var data = await _repo.Query(query);
+        var data = await _repo.Query(query, cancellationToken);
         data.Page = query.Page;
         data.PageSize = query.PageSize;
 

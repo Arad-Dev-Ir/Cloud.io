@@ -4,5 +4,5 @@ using Web.Core.Contract;
 
 public abstract class QueryPipeline(IServiceProvider serviceProvider) : Procedure<QueryPipeline>(serviceProvider)
 {
-    public abstract Task<QueryResponse<T>> ExecuteAsync<Q, T>(Q query) where Q : IQuery<T>;
+    public abstract Task<QueryResponse<T>> ExecuteAsync<Q, T>(Q query, CancellationToken cancellationToken) where Q : IQuery<T>;
 }

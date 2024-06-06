@@ -2,9 +2,9 @@
 
 public interface IUnitOfWork : IDisposable, IAsyncDisposable
 {
-    Task PerformTransactionalAsync(Action act);
-    Task StartAsync();
-    Task CommitAsync();
-    Task RollbackAsync();
-    Task SaveAsync();
+    Task PerformTransactionalAsync(Action act, CancellationToken cancellationToken);
+    Task StartAsync(CancellationToken cancellationToken);
+    Task CommitAsync(CancellationToken cancellationToken);
+    Task RollbackAsync(CancellationToken cancellationToken);
+    Task SaveAsync(CancellationToken cancellationToken);
 }

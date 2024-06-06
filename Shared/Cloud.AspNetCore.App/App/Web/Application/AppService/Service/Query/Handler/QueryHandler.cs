@@ -9,7 +9,7 @@ public abstract class QueryHandler<Q, D> : IQueryHandler<Q, D> where Q : IQuery<
     public QueryHandler()
     { }
 
-    public abstract Task<QueryResponse<D>> ExecuteAsync(Q query);
+    public abstract Task<QueryResponse<D>> ExecuteAsync(Q query, CancellationToken cancellationToken);
 
     protected virtual Task<QueryResponse<D>> SetAsync(D data)
     {

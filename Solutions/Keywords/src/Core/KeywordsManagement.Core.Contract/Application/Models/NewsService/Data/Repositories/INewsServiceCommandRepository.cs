@@ -4,5 +4,5 @@ using Models;
 
 public interface INewsServiceCommandRepository
 {
-    Task AddAsync(NewsService entity);
+    Task AddAsync(NewsService entity, CancellationToken cancellationToken);
 }

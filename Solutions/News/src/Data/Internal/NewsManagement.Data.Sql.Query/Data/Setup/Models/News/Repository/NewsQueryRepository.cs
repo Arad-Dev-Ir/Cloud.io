@@ -12,7 +12,7 @@ public class NewsQueryRepository : QueryRepository<NewsManagementQueryContext>, 
     public NewsQueryRepository(NewsManagementQueryContext context) : base(context)
     { }
 
-    public async Task<NewsDetailResult> Query(NewsDetail query)
+    public async Task<NewsDetailResult> Query(NewsDetail query, CancellationToken cancellationToken)
     {
         var result = await Context
         .News
@@ -36,12 +36,12 @@ public class NewsQueryRepository : QueryRepository<NewsManagementQueryContext>, 
             })
             .ToList()
         })
-        .FirstOrDefaultAsync();
+        .FirstOrDefaultAsync(cancellationToken);
 
         return result;
     }
 
-    public async Task<PagedData<NewsRecordsResult>> Query(NewsRecords query)
+    public async Task<PagedData<NewsRecordsResult>> Query(NewsRecords query, CancellationToken cancellationToken)
     {
         var result = new PagedData<NewsRecordsResult>();
         var lookup = Context.News.AsQueryable();
@@ -58,7 +58,7 @@ public class NewsQueryRepository : QueryRepository<NewsManagementQueryContext>, 
             Description = e.Description,
             RegistrationDate = e.CreatedDateTime
         })
-        .ToListAsync();
+        .ToListAsync(cancellationToken);
         result.TotalCount = query.NeedTotalCount ? lookup.Count() : default;
 
         return result;

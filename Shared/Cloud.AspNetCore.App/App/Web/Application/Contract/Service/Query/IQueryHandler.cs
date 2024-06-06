@@ -2,5 +2,5 @@
 
 public interface IQueryHandler<in Q, D> where Q : IQuery<D>
 {
-    Task<QueryResponse<D>> ExecuteAsync(Q query);
+    Task<QueryResponse<D>> ExecuteAsync(Q query, CancellationToken cancellationToken);
 }

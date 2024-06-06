@@ -29,21 +29,21 @@ public abstract class CommandContext(DbContextOptions options) : DbContext(optio
     #region Transaction
 
     protected IDbContextTransaction Transaction;
-    public async Task StartAsync()
-    => Transaction = await Database.BeginTransactionAsync();
+    public async Task StartAsync(CancellationToken cancellationToken)
+    => Transaction = await Database.BeginTransactionAsync(cancellationToken);
 
-    public async Task CommitAsync()
+    public async Task CommitAsync(CancellationToken cancellationToken)
     {
         if (Transaction is not null)
-            await Transaction.CommitAsync();
+            await Transaction.CommitAsync(cancellationToken);
         else
             throw new NullReferenceException("Please call 'StartTransaction' method first.");
     }
 
-    public async Task RollbackAsync()
+    public async Task RollbackAsync(CancellationToken cancellationToken)
     {
         if (Transaction is not null)
-            await Transaction.RollbackAsync();
+            await Transaction.RollbackAsync(cancellationToken);
         else
             throw new NullReferenceException("Please call 'StartTransaction' method first.");
     }
@@ -52,8 +52,8 @@ public abstract class CommandContext(DbContextOptions options) : DbContext(optio
 
     #region Save
 
-    public async Task<int> SaveAsync()
-    => await SaveChangesAsync();
+    public async Task<int> SaveAsync(CancellationToken cancellationToken)
+    => await SaveChangesAsync(cancellationToken);
 
     public int Save()
     => SaveChanges();

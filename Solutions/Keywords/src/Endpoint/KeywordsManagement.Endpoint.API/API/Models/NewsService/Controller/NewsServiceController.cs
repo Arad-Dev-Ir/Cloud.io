@@ -8,6 +8,6 @@ using Core.NewsService.Contracts;
 public class NewsServiceController : ApiController
 {
     [HttpPost("create-new-service")]
-    public async Task<IActionResult> Post(CreateNewsService command)
-    => await Create<CreateNewsService, long>(command);
+    public async Task<IActionResult> Post(CreateNewsService command, CancellationToken cancellationToken)
+    => await Create<CreateNewsService, long>(command, cancellationToken);
 }

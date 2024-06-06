@@ -9,18 +9,18 @@ public class UnitOfWork<C> : IUnitOfWork, IDisposable, IAsyncDisposable where C 
     public UnitOfWork(C context)
     => _context = context;
 
-    public async Task PerformTransactionalAsync(Action act)
+    public async Task PerformTransactionalAsync(Action act, CancellationToken cancellationToken)
     {
         try
         {
-            await StartAsync();
+            await StartAsync(cancellationToken);
             act();
-            await CommitAsync();
+            await CommitAsync(cancellationToken);
             await DisposeAsync();
         }
         catch (Exception)
         {
-            await RollbackAsync();
+            await RollbackAsync(cancellationToken);
             await DisposeAsync();
             throw;
         }
@@ -28,17 +28,17 @@ public class UnitOfWork<C> : IUnitOfWork, IDisposable, IAsyncDisposable where C 
 
     #region operations
 
-    public async Task StartAsync()
-    => await _context.StartAsync();
+    public async Task StartAsync(CancellationToken cancellationToken)
+    => await _context.StartAsync(cancellationToken);
 
-    public async Task CommitAsync()
-    => await _context.CommitAsync();
+    public async Task CommitAsync(CancellationToken cancellationToken)
+    => await _context.CommitAsync(cancellationToken);
 
-    public async Task RollbackAsync()
-    => await _context.RollbackAsync();
+    public async Task RollbackAsync(CancellationToken cancellationToken)
+    => await _context.RollbackAsync(cancellationToken);
 
-    public async Task SaveAsync()
-    => await _context.SaveAsync();
+    public async Task SaveAsync(CancellationToken cancellationToken)
+    => await _context.SaveAsync(cancellationToken);
 
     public void Dispose()
     => _context.Dispose();

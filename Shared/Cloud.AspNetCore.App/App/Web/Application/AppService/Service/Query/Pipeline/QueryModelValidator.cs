@@ -13,7 +13,7 @@ public class QueryModelValidator : QueryPipeline
     private readonly ILogger<QueryModelValidator> _logger;
 
     private const int _eventId = EventId.DomainValidationException;
-    public override async Task<QueryResponse<D>> ExecuteAsync<Q, D>(Q query)
+    public override async Task<QueryResponse<D>> ExecuteAsync<Q, D>(Q query, CancellationToken cancellationToken)
     {
         var result = default(QueryResponse<D>);
 
@@ -22,7 +22,7 @@ public class QueryModelValidator : QueryPipeline
 
         try
         {
-            result = await Next.ExecuteAsync<Q, D>(query);
+            result = await Next.ExecuteAsync<Q, D>(query, cancellationToken);
         }
         // for sync mode.
         catch (AppException e)

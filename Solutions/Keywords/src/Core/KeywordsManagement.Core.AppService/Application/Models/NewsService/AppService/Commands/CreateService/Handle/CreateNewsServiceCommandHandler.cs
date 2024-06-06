@@ -19,12 +19,12 @@ public class CreateNewsServiceCommandHandler : CommandHandler<CreateNewsService,
     private void Initialize()
     { }
 
-    public override async Task<CommandResponse<long>> ExecuteAsync(CreateNewsService command)
+    public override async Task<CommandResponse<long>> ExecuteAsync(CreateNewsService command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<long>);
         var service = Service.Instance(command.Title, command.Name);
-        await _repo.AddAsync(service);
-        await _unitOfWork.SaveAsync();
+        await _repo.AddAsync(service, cancellationToken);
+        await _unitOfWork.SaveAsync(cancellationToken);
         result = await OkAsync(service.Id.Value);
         return result;
     }

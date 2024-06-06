@@ -15,7 +15,7 @@ public class QueryRequestValidator : QueryPipeline
     private readonly ILogger<QueryRequestValidator> _logger;
 
     private const int _eventId = EventId.QueryValidationException;
-    public override async Task<QueryResponse<D>> ExecuteAsync<Q, D>(Q query)
+    public override async Task<QueryResponse<D>> ExecuteAsync<Q, D>(Q query, CancellationToken cancellationToken)
     {
         var result = default(QueryResponse<D>);
 
@@ -37,7 +37,7 @@ public class QueryRequestValidator : QueryPipeline
             query,
             time);
 
-            result = await Next.ExecuteAsync<Q, D>(query);
+            result = await Next.ExecuteAsync<Q, D>(query, cancellationToken);
         }
         else
         {

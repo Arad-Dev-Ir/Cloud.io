@@ -19,12 +19,12 @@ public class CreateKeywordCommandHandler : CommandHandler<CreateKeyword, long>
     private void Initialize()
     { }
 
-    public override async Task<CommandResponse<long>> ExecuteAsync(CreateKeyword command)
+    public override async Task<CommandResponse<long>> ExecuteAsync(CreateKeyword command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<long>);
         var keyword = Keyword.Instance(command.Title);
         _repo.Add(keyword);
-        await _unitOfWork.SaveAsync();
+        await _unitOfWork.SaveAsync(cancellationToken);
         result = await OkAsync(keyword.Id.Value);
         return result;
     }

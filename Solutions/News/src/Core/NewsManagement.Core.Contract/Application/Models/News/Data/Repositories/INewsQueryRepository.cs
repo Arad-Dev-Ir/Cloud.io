@@ -4,6 +4,6 @@ using Cloud.Web.Core.Contract;
 
 public interface INewsQueryRepository : IQueryRepository
 {
-    Task<NewsDetailResult> Query(NewsDetail query);
-    Task<PagedData<NewsRecordsResult>> Query(NewsRecords query);
+    Task<NewsDetailResult> Query(NewsDetail query, CancellationToken cancellationToken);
+    Task<PagedData<NewsRecordsResult>> Query(NewsRecords query, CancellationToken cancellationToken);
 }

@@ -19,7 +19,7 @@ public class CommandDispatcher : CommandPipeline
     private readonly Stopwatch _stopwatch;
 
     private const int _eventId = EventId.PerformanceMeasurement;
-    public override async Task<CommandResponse> ExecuteAsync<C>(C command)
+    public override async Task<CommandResponse> ExecuteAsync<C>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse);
         _stopwatch.Start();
@@ -35,7 +35,7 @@ public class CommandDispatcher : CommandPipeline
             time);
 
             var commandHandler = ServiceProvider.GetRequiredService<ICommandHandler<C>>();
-            result = await commandHandler.ExecuteAsync(command);
+            result = await commandHandler.ExecuteAsync(command, cancellationToken);
         }
         catch (Exception e)
         {
@@ -57,7 +57,7 @@ public class CommandDispatcher : CommandPipeline
         return result;
     }
 
-    public override async Task<CommandResponse<D>> ExecuteAsync<C, D>(C command)
+    public override async Task<CommandResponse<D>> ExecuteAsync<C, D>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<D>);
 
@@ -73,7 +73,7 @@ public class CommandDispatcher : CommandPipeline
             time);
 
             var commandHandler = ServiceProvider.GetRequiredService<ICommandHandler<C, D>>();
-            result = await commandHandler.ExecuteAsync(command);
+            result = await commandHandler.ExecuteAsync(command, cancellationToken);
         }
         catch (Exception e)
         {

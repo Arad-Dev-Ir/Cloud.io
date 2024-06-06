@@ -13,7 +13,7 @@ public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryCon
     public KeywordQueryRepository(KeywordsManagementQueryContext context) : base(context)
     { }
 
-    public async Task<PagedData<TitleAndModeSearchResult>> Query(TitleAndModeSearch query)
+    public async Task<PagedData<TitleAndModeSearchResult>> Query(TitleAndModeSearch query, CancellationToken cancellationToken)
     {
         var result = new PagedData<TitleAndModeSearchResult>();
         var lookup = Context.Keywords.AsQueryable();
@@ -37,7 +37,7 @@ public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryCon
             Title = e.Title,
             Mode = e.Mode,
         })
-        .ToListAsync();
+        .ToListAsync(cancellationToken);
 
         var a = result.GetHashCode();
         result.TotalCount = query.NeedTotalCount ? lookup.Count() : default;

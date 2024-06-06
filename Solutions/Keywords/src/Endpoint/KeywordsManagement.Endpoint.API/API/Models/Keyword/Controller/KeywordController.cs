@@ -9,22 +9,22 @@ using Core.Keyword.Contracts;
 public class KeywordController : ApiController
 {
     [HttpPost("define-keyword")]
-    public async Task<IActionResult> Post(CreateKeyword command)
-    => await Create<CreateKeyword, long>(command);
+    public async Task<IActionResult> Post(CreateKeyword command, CancellationToken cancellationToken)
+    => await Create<CreateKeyword, long>(command, cancellationToken);
 
     [HttpPut("edit-keyword-title")]
-    public async Task<IActionResult> Put([FromBody] ChangeKeywordTitle command)
-    => await Edit<ChangeKeywordTitle>(command);
+    public async Task<IActionResult> Put([FromBody] ChangeKeywordTitle command, CancellationToken cancellationToken)
+    => await Edit<ChangeKeywordTitle>(command, cancellationToken);
 
     [HttpPost("activate-keyword")]
-    public async Task<IActionResult> Post([FromBody] ActivateKeyword command)
-    => await Edit<ActivateKeyword>(command);
+    public async Task<IActionResult> Post([FromBody] ActivateKeyword command, CancellationToken cancellationToken)
+    => await Edit<ActivateKeyword>(command, cancellationToken);
 
     [HttpPost("deactivate-keyword")]
-    public async Task<IActionResult> Post([FromBody] DeactivateKeyword command)
-    => await Edit<DeactivateKeyword>(command);
+    public async Task<IActionResult> Post([FromBody] DeactivateKeyword command, CancellationToken cancellationToken)
+    => await Edit<DeactivateKeyword>(command, cancellationToken);
 
     [HttpGet("search")]
-    public async Task<IActionResult> Get([FromQuery] TitleAndModeSearch command)
-    => await ExcecuteQuery<TitleAndModeSearch, PagedData<TitleAndModeSearchResult>>(command);
+    public async Task<IActionResult> Get([FromQuery] TitleAndModeSearch command, CancellationToken cancellationToken)
+    => await ExcecuteQuery<TitleAndModeSearch, PagedData<TitleAndModeSearchResult>>(command, cancellationToken);
 }

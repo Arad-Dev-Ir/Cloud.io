@@ -14,7 +14,7 @@ public class CommandModelValidator : CommandPipeline
 
 
     private const int _eventId = EventId.DomainValidationException;
-    public override async Task<CommandResponse> ExecuteAsync<C>(C command)
+    public override async Task<CommandResponse> ExecuteAsync<C>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse);
 
@@ -23,7 +23,7 @@ public class CommandModelValidator : CommandPipeline
 
         try
         {
-            result = await Next.ExecuteAsync<C>(command);
+            result = await Next.ExecuteAsync<C>(command, cancellationToken);
         }
         catch (AppException e)
         {
@@ -53,7 +53,7 @@ public class CommandModelValidator : CommandPipeline
         return result;
     }
 
-    public override async Task<CommandResponse<D>> ExecuteAsync<C, D>(C command)
+    public override async Task<CommandResponse<D>> ExecuteAsync<C, D>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<D>);
 
@@ -62,7 +62,7 @@ public class CommandModelValidator : CommandPipeline
 
         try
         {
-            result = await Next.ExecuteAsync<C, D>(command);
+            result = await Next.ExecuteAsync<C, D>(command, cancellationToken);
         }
         // for sync mode.
         catch (AppException e)

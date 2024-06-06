@@ -11,9 +11,9 @@ public class NewsRecordsQueryHandler : QueryHandler<NewsRecords, PagedData<NewsR
     public NewsRecordsQueryHandler(INewsQueryRepository repo)
     => _repo = repo;
 
-    public override async Task<QueryResponse<PagedData<NewsRecordsResult>>> ExecuteAsync(NewsRecords query)
+    public override async Task<QueryResponse<PagedData<NewsRecordsResult>>> ExecuteAsync(NewsRecords query, CancellationToken cancellationToken)
     {
-        var data = await _repo.Query(query);
+        var data = await _repo.Query(query, cancellationToken);
         data.Page = query.Page;
         data.PageSize = query.PageSize;
 

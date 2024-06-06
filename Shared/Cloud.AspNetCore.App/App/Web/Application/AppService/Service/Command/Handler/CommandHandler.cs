@@ -8,7 +8,7 @@ public abstract class CommandHandler<C, D> : ICommandHandler<C, D> where C : ICo
 
     public CommandHandler() { }
 
-    public abstract Task<CommandResponse<D>> ExecuteAsync(C command);
+    public abstract Task<CommandResponse<D>> ExecuteAsync(C command, CancellationToken cancellationToken);
 
     #region Methods
 
@@ -58,7 +58,7 @@ public abstract class CommandHandler<C> : ICommandHandler<C> where C : ICommand
     public CommandHandler() { }
     protected readonly CommandResponse Response = new();
 
-    public abstract Task<CommandResponse> ExecuteAsync(C command);
+    public abstract Task<CommandResponse> ExecuteAsync(C command, CancellationToken cancellationToken);
 
     #region Methods
 

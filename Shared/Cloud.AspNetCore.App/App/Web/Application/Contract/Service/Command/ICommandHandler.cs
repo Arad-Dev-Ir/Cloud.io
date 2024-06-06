@@ -2,10 +2,10 @@
 
 public interface ICommandHandler<C> where C : ICommand
 {
-    Task<CommandResponse> ExecuteAsync(C command);
+    Task<CommandResponse> ExecuteAsync(C command, CancellationToken cancellationToken);
 }
 
 public interface ICommandHandler<C, D> where C : ICommand<D>
 {
-    Task<CommandResponse<D>> ExecuteAsync(C command);
+    Task<CommandResponse<D>> ExecuteAsync(C command, CancellationToken cancellationToken);
 }

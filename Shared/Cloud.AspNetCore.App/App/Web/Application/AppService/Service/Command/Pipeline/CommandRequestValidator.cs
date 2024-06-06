@@ -15,7 +15,7 @@ public class CommandRequestValidator : CommandPipeline
     => _logger = logger;
 
     private const int _eventId = EventId.CommandValidationException;
-    public override async Task<CommandResponse> ExecuteAsync<C>(C command)
+    public override async Task<CommandResponse> ExecuteAsync<C>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse);
         var type = command.GetType();
@@ -36,7 +36,7 @@ public class CommandRequestValidator : CommandPipeline
             command,
             time);
 
-            result = await Next.ExecuteAsync<C>(command);
+            result = await Next.ExecuteAsync<C>(command, cancellationToken);
         }
         else
         {
@@ -51,7 +51,7 @@ public class CommandRequestValidator : CommandPipeline
         return result;
     }
 
-    public override async Task<CommandResponse<T>> ExecuteAsync<C, T>(C command)
+    public override async Task<CommandResponse<T>> ExecuteAsync<C, T>(C command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<T>);
         var type = command.GetType();
@@ -72,7 +72,7 @@ public class CommandRequestValidator : CommandPipeline
             command,
             time);
 
-            result = await Next.ExecuteAsync<C, T>(command);
+            result = await Next.ExecuteAsync<C, T>(command, cancellationToken);
         }
         else
         {

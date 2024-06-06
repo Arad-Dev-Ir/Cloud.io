@@ -4,6 +4,6 @@ using News = Models.News;
 
 public interface INewsCommandRepository
 {
-    Task AddAsync(News entity);
+    Task AddAsync(News entity, CancellationToken cancellationToken);
     void Add(News entity);
 }

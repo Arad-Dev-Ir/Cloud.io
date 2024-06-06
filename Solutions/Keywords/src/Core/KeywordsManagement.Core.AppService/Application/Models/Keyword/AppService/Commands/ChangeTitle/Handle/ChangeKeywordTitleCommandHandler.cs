@@ -19,11 +19,11 @@ public class ChangeKeywordTitleCommandHandler : CommandHandler<ChangeKeywordTitl
     private void Initialize()
     { }
 
-    public override async Task<CommandResponse> ExecuteAsync(ChangeKeywordTitle command)
+    public override async Task<CommandResponse> ExecuteAsync(ChangeKeywordTitle command, CancellationToken cancellationToken)
     {
         var result = Response;
         var id = command.Id;
-        var keyword = await _repo.GetGraphAsync(id);
+        var keyword = await _repo.GetGraphAsync(id, cancellationToken);
         await keyword.IsNull(
         async () =>
         {
@@ -33,7 +33,7 @@ public class ChangeKeywordTitleCommandHandler : CommandHandler<ChangeKeywordTitl
         async () =>
         {
             keyword.ChangeTitle(command.Title);
-            await _unitOfWork.SaveAsync();
+            await _unitOfWork.SaveAsync(cancellationToken);
             result = await OkAsync();
         });
         return result;

@@ -20,7 +20,7 @@ public class RegisterNewsCommandHandler : CommandHandler<RegisterNews, long>
     public void Initialize()
     { }
 
-    public override async Task<CommandResponse<long>> ExecuteAsync(RegisterNews command)
+    public override async Task<CommandResponse<long>> ExecuteAsync(RegisterNews command, CancellationToken cancellationToken)
     {
         var result = default(CommandResponse<long>);
 
@@ -30,7 +30,7 @@ public class RegisterNewsCommandHandler : CommandHandler<RegisterNews, long>
 
         var news = News.Instance(command.Title, command.Description, command.Body, keywordsCodes);
         _repo.Add(news);
-        await _unitOfWork.SaveAsync();
+        await _unitOfWork.SaveAsync(cancellationToken);
 
         result = await OkAsync(news.Id.Value);
         return result;

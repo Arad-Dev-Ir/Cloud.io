@@ -25,17 +25,17 @@ public class CommandRepository<C, M> : ICommandRepository<M> where C : CommandCo
         return result;
     }
 
-    public async Task<M> GetAsync(Id id)
+    public async Task<M> GetAsync(Id id, CancellationToken cancellationToken)
     {
         var collection = GetCollection();
-        var result = await collection.FindAsync(id);
+        var result = await collection.FindAsync(id, cancellationToken);
         return result;
     }
 
-    public async Task<M> GetAsync(Code code)
+    public async Task<M> GetAsync(Code code, CancellationToken cancellationToken)
     {
         var collection = GetCollection();
-        var result = await collection.FirstOrDefaultAsync(e => e.Code == code);
+        var result = await collection.FirstOrDefaultAsync(e => e.Code == code, cancellationToken);
         return result;
     }
 
@@ -49,13 +49,13 @@ public class CommandRepository<C, M> : ICommandRepository<M> where C : CommandCo
         return result;
     }
 
-    public async Task<M> GetGraphAsync(Id id)
+    public async Task<M> GetGraphAsync(Id id, CancellationToken cancellationToken)
     {
         var collection = GetCollection();
         var query = collection.AsQueryable();
         var navigations = Context.GetInclude(GetEntityType());
         foreach (var item in navigations) query.Include(item);
-        var result = await query.FirstOrDefaultAsync(e => e.Id == id);
+        var result = await query.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
         return result;
     }
 
@@ -69,13 +69,13 @@ public class CommandRepository<C, M> : ICommandRepository<M> where C : CommandCo
         return result;
     }
 
-    public async Task<M> GetGraphAsync(Code code)
+    public async Task<M> GetGraphAsync(Code code, CancellationToken cancellationToken)
     {
         var collection = GetCollection();
         var query = collection.AsQueryable();
         var navigations = Context.GetInclude(GetEntityType());
         foreach (var item in navigations) query.Include(item);
-        var result = await query.FirstOrDefaultAsync(e => e.Code == code);
+        var result = await query.FirstOrDefaultAsync(e => e.Code == code, cancellationToken);
         return result;
     }
 
@@ -83,8 +83,8 @@ public class CommandRepository<C, M> : ICommandRepository<M> where C : CommandCo
     public void Add(M entity)
     => GetCollection().Add(entity);
 
-    public async Task AddAsync(M entity)
-    => await GetCollection().AddAsync(entity);
+    public async Task AddAsync(M entity, CancellationToken cancellationToken)
+    => await GetCollection().AddAsync(entity, cancellationToken);
 
 
     public void Delete(Id id)
@@ -111,8 +111,8 @@ public class CommandRepository<C, M> : ICommandRepository<M> where C : CommandCo
     public bool Exists(Expression<Func<M, bool>> predicate)
     => GetCollection().Any(predicate);
 
-    public async Task<bool> ExistsAsync(Expression<Func<M, bool>> predicate)
-    => await GetCollection().AnyAsync(predicate);
+    public async Task<bool> ExistsAsync(Expression<Func<M, bool>> predicate, CancellationToken cancellationToken)
+    => await GetCollection().AnyAsync(predicate, cancellationToken);
 
     private DbSet<M> GetCollection()
     => Context.Set<M>();

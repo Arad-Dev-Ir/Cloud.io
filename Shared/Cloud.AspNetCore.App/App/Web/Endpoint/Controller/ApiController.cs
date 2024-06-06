@@ -14,19 +14,19 @@ public class ApiController : Controller
     //protected ToolkitService ToolkitService => HttpContext.GetToolkitService();
 
 
-    protected async Task<IActionResult> Create<C, D>(C command) where C : ICommand<D>
+    protected async Task<IActionResult> Create<C, D>(C command, CancellationToken cancellationToken) where C : ICommand<D>
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C, D>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C, D>(command, cancellationToken);
 
         var status = response.Status;
         result = status == ServiceStatus.Ok ? StatusCode((int)HttpStatusCode.Created, response.Data) : BadRequest(response.Messages);
         return result;
     }
-    protected async Task<IActionResult> Create<C>(C command) where C : ICommand
+    protected async Task<IActionResult> Create<C>(C command, CancellationToken cancellationToken) where C : ICommand
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C>(command, cancellationToken);
 
         var status = response.Status;
         result = status == ServiceStatus.Ok ? StatusCode((int)HttpStatusCode.Created) : BadRequest(response.Messages);
@@ -34,10 +34,10 @@ public class ApiController : Controller
     }
 
 
-    protected async Task<IActionResult> Edit<C, D>(C command) where C : ICommand<D>
+    protected async Task<IActionResult> Edit<C, D>(C command, CancellationToken cancellationToken) where C : ICommand<D>
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C, D>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C, D>(command, cancellationToken);
 
         var status = response.Status;
         if (status == ServiceStatus.Ok)
@@ -48,10 +48,10 @@ public class ApiController : Controller
 
         return result;
     }
-    protected async Task<IActionResult> Edit<C>(C command) where C : ICommand
+    protected async Task<IActionResult> Edit<C>(C command, CancellationToken cancellationToken) where C : ICommand
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C>(command, cancellationToken);
 
         var status = response.Status;
         if (status == ServiceStatus.Ok)
@@ -65,10 +65,10 @@ public class ApiController : Controller
     }
 
 
-    protected async Task<IActionResult> Delete<C, D>(C command) where C : ICommand<D>
+    protected async Task<IActionResult> Delete<C, D>(C command, CancellationToken cancellationToken) where C : ICommand<D>
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C, D>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C, D>(command, cancellationToken);
 
         var status = response.Status;
         if (status == ServiceStatus.Ok)
@@ -80,10 +80,10 @@ public class ApiController : Controller
 
         return result;
     }
-    protected async Task<IActionResult> Delete<C>(C command) where C : ICommand
+    protected async Task<IActionResult> Delete<C>(C command, CancellationToken cancellationToken) where C : ICommand
     {
         var result = default(IActionResult);
-        var response = await CommandDispatcher.ExecuteAsync<C>(command);
+        var response = await CommandDispatcher.ExecuteAsync<C>(command, cancellationToken);
 
         var status = response.Status;
         if (status == ServiceStatus.Ok)
@@ -96,10 +96,10 @@ public class ApiController : Controller
         return result;
     }
 
-    protected async Task<IActionResult> ExcecuteQuery<Q, D>(Q query) where Q : IQuery<D>
+    protected async Task<IActionResult> ExcecuteQuery<Q, D>(Q query, CancellationToken cancellationToken) where Q : IQuery<D>
     {
         var result = default(IActionResult);
-        var response = await QueryDispatcher.ExecuteAsync<Q, D>(query);
+        var response = await QueryDispatcher.ExecuteAsync<Q, D>(query, cancellationToken);
 
         var status = response.Status;
         if (status == ServiceStatus.InvalidDomainState || status == ServiceStatus.ValidationError)

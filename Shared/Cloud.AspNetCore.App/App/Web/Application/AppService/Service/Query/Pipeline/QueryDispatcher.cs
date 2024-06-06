@@ -18,7 +18,7 @@ public class QueryDispatcher : QueryPipeline
     private readonly Stopwatch _stopwatch;
 
     private const int _eventId = EventId.PerformanceMeasurement;
-    public override async Task<QueryResponse<T>> ExecuteAsync<Q, T>(Q query)
+    public override async Task<QueryResponse<T>> ExecuteAsync<Q, T>(Q query, CancellationToken cancellationToken)
     {
         _stopwatch.Start();
 
@@ -28,7 +28,7 @@ public class QueryDispatcher : QueryPipeline
         try
         {
             var queryHandler = ServiceProvider.GetRequiredService<IQueryHandler<Q, T>>();
-            return await queryHandler.ExecuteAsync(query);
+            return await queryHandler.ExecuteAsync(query, cancellationToken);
         }
         catch (InvalidOperationException e)
         {
