@@ -38,7 +38,7 @@ public class EventRequestValidator : EventPipeline
     }
 
 
-    private R ValidateEvent<E, R>(E @event) where E : TransferModel, IEvent where R : AppServiceResponse, new()
+    private R ValidateEvent<E, R>(E @event) where E : Record, IEvent where R : AppServiceResponse, new()
     {
         var result = default(R);
 

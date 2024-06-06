@@ -2,7 +2,7 @@
 
 using Cloud.Core.Models;
 
-public record TitleAndModeSearchResult : TransferModel
+public record TitleAndModeSearchResult : Record
 {
     public long Id { get; set; }
     public Guid Code { get; set; }

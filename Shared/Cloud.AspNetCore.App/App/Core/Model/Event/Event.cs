@@ -3,5 +3,5 @@
 public interface IEvent
 { }
 
-public record Event : TransferModel, IEvent
+public record Event : Record, IEvent
 { }

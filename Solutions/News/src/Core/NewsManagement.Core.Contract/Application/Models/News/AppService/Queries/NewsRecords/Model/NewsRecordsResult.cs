@@ -2,7 +2,7 @@
 
 using Cloud.Core.Models;
 
-public record NewsRecordsResult : TransferModel
+public record NewsRecordsResult : Record
 {
     public long Id { get; set; }
     public string Title { get; set; }

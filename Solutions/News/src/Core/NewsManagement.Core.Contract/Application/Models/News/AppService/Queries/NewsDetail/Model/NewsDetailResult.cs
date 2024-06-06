@@ -2,7 +2,7 @@
 
 using Cloud.Core.Models;
 
-public record NewsDetailResult : TransferModel
+public record NewsDetailResult : Record
 {
     public long Id { get; set; }
     public string Title { get; set; }
@@ -12,7 +12,7 @@ public record NewsDetailResult : TransferModel
     public DateTime RegistrationDate { get; set; }
 }
 
-public record KeywordResult : TransferModel
+public record KeywordResult : Record
 {
     public Guid Code { get; set; }
     public string Title { get; set; }

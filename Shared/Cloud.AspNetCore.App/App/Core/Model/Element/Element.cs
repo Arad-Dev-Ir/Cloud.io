@@ -1,6 +1,6 @@
 ﻿namespace Cloud.Core.Models;
 
-public abstract record Element : TransferModel;
+public abstract record Element : Record;
 
 #region Old
 

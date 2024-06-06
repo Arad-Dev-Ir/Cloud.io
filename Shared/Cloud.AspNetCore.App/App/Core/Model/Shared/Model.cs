@@ -18,4 +18,4 @@ public abstract class Model : Atom
 }
 
 
-public abstract record TransferModel() : Object;
+public abstract record Record() : Object;
