@@ -12,17 +12,10 @@ internal class File : Entity
     public Bytes Bytes { get; set; }
 }
 
-public class Bytes : Element
+public record Bytes : Element
 {
-    public Bytes()
-    { }
 
-    public string Alias { get; set; } = Empty;
+    public string Alias { get; set; }
 
     public byte[] Source { get; set; }
-
-    protected override IEnumerable<object> Lookup()
-    {
-        throw new NotImplementedException();
-    }
 }

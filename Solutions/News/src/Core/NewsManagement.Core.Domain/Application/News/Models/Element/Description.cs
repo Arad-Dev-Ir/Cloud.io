@@ -3,9 +3,9 @@
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public class Description : Element
+public record Description : Element
 {
-    public string Value { get; private set; } = Empty;
+    public string Value { get; private set; }
 
     #region Initialize
 
@@ -24,11 +24,6 @@ public class Description : Element
     #endregion
 
     #region Methods
-
-    protected override IEnumerable<object> Lookup()
-    {
-        yield return Value;
-    }
 
     public static implicit operator Description(string value)
     => new(value);

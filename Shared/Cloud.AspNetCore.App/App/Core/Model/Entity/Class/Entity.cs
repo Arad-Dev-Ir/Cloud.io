@@ -1,7 +1,5 @@
 ﻿namespace Cloud.Core.Models;
 
-using Cloud.Core;
-
 public abstract class Entity : Model
 {
     public Id Id { get; protected set; }
