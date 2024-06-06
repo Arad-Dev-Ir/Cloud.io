@@ -9,7 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.sql
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -262,7 +261,11 @@ UpgradeLog*.htm
 ServiceFabricBackup/
 *.rptproj.bak
 
+# Http files
+*.http
+
 # SQL Server files
+*.sql
 *.mdf
 *.ldf
 *.ndf
