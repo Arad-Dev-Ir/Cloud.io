@@ -5,16 +5,15 @@ using Cloud.Core.Models;
 
 public record Description : Element
 {
-    public string Value { get; private set; }
+    public string Value { get; init; }
 
     #region Initialize
 
+    private Description()
+    { }
     private Description(string value)
-    => Initialize(act: () => OnCheckDescription(value), value: value);
-
-    private void Initialize(string value, Action? act = default)
     {
-        act?.Invoke();
+        OnCheckDescription(value);
         Value = value;
     }
 
@@ -23,15 +22,16 @@ public record Description : Element
 
     #endregion
 
-    #region Methods
+    #region Conversion operators
 
     public static implicit operator Description(string value)
     => new(value);
-    public static explicit operator string(Description Description)
-    => Description.Value;
+    public static explicit operator string(Description title)
+    => title.Value;
 
-    public override string ToString()
-    => Value;
+    #endregion
+
+    #region Methods
 
     private void OnCheckDescription(string value)
     {
@@ -44,6 +44,9 @@ public record Description : Element
         if (!value.IsLengthBetween(minChar, maxChar))
             throw new InvalidElementException("The value length for {0} must be between {1} and {2} characters!", element, $"{minChar}", $"{maxChar}");
     }
+
+    public override string ToString()
+    => Value;
 
     #endregion
 }
