@@ -3,7 +3,7 @@
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public class ProcessMode : Enumer
+public sealed record ProcessMode : Enumer
 {
     public static ProcessMode Raised { get; private set; } = new(nameof(Raised));
     public static ProcessMode Registered { get; private set; } = new(nameof(Registered));
@@ -29,9 +29,9 @@ public class ProcessMode : Enumer
 
     #region Initialize
 
-    public ProcessMode() : base(Empty)
+    public ProcessMode() : base(Atom.Empty)
     { }
-    public ProcessMode(string value) : base(value.IsEmpty() ? Empty : value)
+    public ProcessMode(string value) : base(value.IsEmpty() ? Atom.Empty : value)
     { }
     static ProcessMode()
     => Initialize();

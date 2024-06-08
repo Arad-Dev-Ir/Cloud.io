@@ -5,7 +5,7 @@ using Cloud.Core.Models;
 
 public record Body : Element
 {
-    public string Value { get; init; }
+    public string Value { get; }
 
     #region Initialize
 

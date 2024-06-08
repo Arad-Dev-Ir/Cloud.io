@@ -15,8 +15,8 @@ internal class KeywordConfiguration : Configuration<Keyword>
         .HasMaxLength(50)
         .HasConversion<TitleConversion>();
 
-        entityType.Property(e => e.Mode)
+        entityType.Property(e => e.State)
         .HasMaxLength(20)
-        .HasConversion<ModeConversion>();
+        .HasConversion<KeywordStateConversion>();
     }
 }

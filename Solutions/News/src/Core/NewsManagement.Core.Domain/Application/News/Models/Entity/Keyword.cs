@@ -6,6 +6,10 @@ public class Keyword : Entity
 {
     public Code KeywordCode { get; private set; }
 
+    #region Initialize
+
+    private Keyword()
+    { }
     public Keyword(Code code)
     => KeywordCode = code;
 
@@ -13,4 +17,6 @@ public class Keyword : Entity
     => new(code);
     public static Keyword Instance(string code)
     => new(code);
+
+    #endregion
 }

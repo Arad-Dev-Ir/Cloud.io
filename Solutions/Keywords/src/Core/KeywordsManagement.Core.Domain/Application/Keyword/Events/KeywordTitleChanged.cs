@@ -4,5 +4,5 @@ using Cloud.Core.Models;
 
 public record KeywordTitleChanged(Guid Code, string Title) : Event
 {
-    public string Mode { get; private set; } = Models.Mode.Preview.Value;
+    public string State { get; } = KeywordState.Preview.Value;
 }

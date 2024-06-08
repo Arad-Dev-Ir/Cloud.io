@@ -4,5 +4,5 @@ using Cloud.Core.Models;
 
 public record KeywordActivated(Guid Code, string Title) : Event
 {
-    public string Mode { get; private set; } = Models.Mode.Active.Value;
+    public string State { get; } = KeywordState.Active.Value;
 }

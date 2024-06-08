@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-public abstract class Enumer : Model, IComparer
+public abstract record Enumer : Record
 {
     protected Enumer(string value)
-     => Value = value.IsEmpty() ? Empty : value;
+     => Value = value.IsEmpty() ? Atom.Empty : value;
 
     public string Value { get; private set; }
     public abstract string Display { get; }
@@ -23,22 +23,22 @@ public abstract class Enumer : Model, IComparer
         return result;
     }
 
-    public override bool Equals(object? obj)
-    {
-        var b = obj as Enumer;
-        var result = b.As<object> != null ? Value == b.Value : false;
-        return result;
-    }
+    //public override bool Equals(object? obj)
+    //{
+    //    var b = obj as Enumer;
+    //    var result = b.As<object> != null ? Value == b.Value : false;
+    //    return result;
+    //}
 
-    public static bool operator ==(Enumer a, Enumer b)
-    => a.As<object> != null ? a.Equals(b) : false;
+    //public static bool operator ==(Enumer a, Enumer b)
+    //=> a.As<object> != null ? a.Equals(b) : false;
 
-    public static bool operator !=(Enumer a, Enumer b)
-    => !(a == b);
+    //public static bool operator !=(Enumer a, Enumer b)
+    //=> !(a == b);
 
-    public int Compare(object? x, object? y)
-    => Value.CompareTo(((Enumer)y).Value);
+    //public int Compare(object? x, object? y)
+    //=> Value.CompareTo(((Enumer)y).Value);
 
-    public override int GetHashCode()
-    => base.GetHashCode();
+    //public override int GetHashCode()
+    //=> base.GetHashCode();
 }

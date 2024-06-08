@@ -3,14 +3,14 @@
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public class Mode : Enumer
+public sealed record KeywordState : Enumer
 {
-    public static Mode Preview { get; private set; } = new(nameof(Preview));
-    public static Mode Active { get; private set; } = new(nameof(Active));
-    public static Mode Inactive { get; private set; } = new(nameof(Inactive));
+    public static KeywordState Preview { get; private set; } = new(nameof(Preview));
+    public static KeywordState Active { get; private set; } = new(nameof(Active));
+    public static KeywordState Inactive { get; private set; } = new(nameof(Inactive));
 
 
-    public static List<Mode> Items { get; private set; } = [];
+    public static List<KeywordState> Items { get; private set; } = [];
 
     public override string Display
     => Value switch
@@ -23,16 +23,16 @@ public class Mode : Enumer
 
     #region Initialize
 
-    public Mode() : base(Empty)
+    public KeywordState() : base(Atom.Empty)
     { }
-    public Mode(string value) : base(value.IsEmpty() ? Empty : value)
+    public KeywordState(string value) : base(value.IsEmpty() ? Atom.Empty : value)
     { }
-    static Mode()
+    static KeywordState()
     => Initialize();
 
     static void Initialize()
     {
-        Items.Add(new Mode());
+        Items.Add(new KeywordState());
         Items.Add(new(nameof(Preview)));
         Items.Add(new(nameof(Active)));
         Items.Add(new(nameof(Inactive)));
