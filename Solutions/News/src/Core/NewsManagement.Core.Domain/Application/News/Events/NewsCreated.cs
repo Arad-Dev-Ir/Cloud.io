@@ -2,4 +2,4 @@
 
 using Cloud.Core.Models;
 
-public record NewsCreated(Guid Code, string Title, string Description, string Body, List<string> Keywords) : Event;
+public record NewsCreated(Guid Code, string Title, string Description, string Body, IEnumerable<string> Keywords) : Event;

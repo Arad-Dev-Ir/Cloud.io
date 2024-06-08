@@ -2,7 +2,7 @@
 
 using Cloud.Core.Models;
 
-public class Module : Entity
+public abstract class Module : Entity
 {
     //public int Version { get; private set; }
 

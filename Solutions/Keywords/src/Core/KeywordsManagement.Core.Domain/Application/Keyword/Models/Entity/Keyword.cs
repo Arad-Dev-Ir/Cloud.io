@@ -6,24 +6,18 @@ using Cloud.Web.Core;
 public class Keyword : Module
 {
     public Title Title { get; private set; }
-    public Mode Mode { get; private set; } = Mode.Preview;
+    public Mode Mode { get; private set; }
 
     #region Initialize
 
+    private Keyword()
+    { }
     private Keyword(Title title)
-    => Initialize(title, () =>
-    {
-        Mode = Mode.Preview;
-        OnCreateKeyword();
-    });
-
-    private void Initialize(Title title, Action? act = default)
     {
         Title = title;
-        Initialize(act);
+        Mode = Mode.Preview;
+        OnCreateKeyword();
     }
-    private void Initialize(Action? act = default)
-    => act?.Invoke();
 
     public static Keyword Instance(Title title)
     => new(title);
@@ -38,43 +32,35 @@ public class Keyword : Module
     public void ChangeTitle(Title title)
     {
         var action = nameof(ChangeTitle);
-        var mode = Mode.Inactive;
-        if (Mode == mode)
-            throw new InvalidEntityException("Cannot call action {0}, because the {1} is {2}.", action, modeString, mode.Value);
+        var inactiveMode = Mode.Inactive;
+        if (Mode == inactiveMode)
+            throw new InvalidEntityException("Cannot call action {0}, because the {1} is {2}.", action, modeString, inactiveMode.Value);
 
-        Initialize(title, () =>
-        {
-            Mode = Mode.Preview;
-            OnChangeKeywordTitle();
-        });
+        Title = title;
+        Mode = Mode.Preview;
+        OnChangeKeywordTitle();
     }
 
     public void Activate()
     {
         var action = nameof(Activate);
-        var mode = Mode.Active;
-        if (Mode == mode)
-            throw new InvalidEntityException("Cannot call action {0}, because the {1} is already {2}.", action, modeString, mode.Value);
+        var activeMode = Mode.Active;
+        if (Mode == activeMode)
+            throw new InvalidEntityException("Cannot call action {0}, because the {1} is already {2}.", action, modeString, activeMode.Value);
 
-        Initialize(() =>
-        {
-            Mode = Mode.Active;
-            OnActivateKeyword();
-        });
+        Mode = Mode.Active;
+        OnActivateKeyword();
     }
 
     public void Deactivate()
     {
         var action = nameof(Deactivate);
-        var mode = Mode.Inactive;
-        if (Mode == mode)
-            throw new InvalidEntityException("Cannot call action {0}, because the {1} is already {2}.", action, modeString, mode.Value);
+        var inactiveMode = Mode.Inactive;
+        if (Mode == inactiveMode)
+            throw new InvalidEntityException("Cannot call action {0}, because the {1} is already {2}.", action, modeString, inactiveMode.Value);
 
-        Initialize(() =>
-        {
-            Mode = Mode.Inactive;
-            OnDeactivateKeyword();
-        });
+        Mode = Mode.Inactive;
+        OnDeactivateKeyword();
     }
 
     private void OnCreateKeyword()

@@ -10,17 +10,12 @@ public class NewsService : Module
     #region Initialize
 
     private NewsService(Title title, Name name)
-    => Initialize(title, name, () => OnCreateService());
-
-    private void Initialize(Title title, Name name, Action? act = default)
     {
         Title = title;
         Name = name;
 
-        Initialize(act);
+        OnCreateService();
     }
-    private void Initialize(Action? act = default)
-    => act?.Invoke();
 
     public static NewsService Instance(Title title, Name name)
     => new(title, name);

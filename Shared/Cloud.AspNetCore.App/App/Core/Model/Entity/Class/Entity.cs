@@ -8,6 +8,8 @@ public abstract class Entity : Model
     protected Entity()
     { }
 
+    #region Methods
+
     public override bool Equals(object? obj)
     => (obj is Entity entity) && Id == entity.Id;
 
@@ -19,4 +21,6 @@ public abstract class Entity : Model
 
     public override int GetHashCode()
     => Id.GetHashCode();
+
+    #endregion
 }
