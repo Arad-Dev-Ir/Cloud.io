@@ -63,12 +63,12 @@ public static class Extension
         source.AddDbContext<KeywordsManagementCommandContext>(e =>
         e.UseSqlServer(configuration.GetConnectionString("KeywordsManagementCommandDb_ConnectionString"))
         .AddInterceptors(new OutboxEventInterceptor())
-        .SetDatabaseOptions()
+        .SetDatabaseLogOptions()
         );
 
         source.AddDbContext<KeywordsManagementQueryContext>(e =>
         e.UseSqlServer(configuration.GetConnectionString("KeywordsManagementQueryDb_ConnectionString"))
-        .SetDatabaseOptions()
+        .SetDatabaseLogOptions()
         );
         return source;
     }

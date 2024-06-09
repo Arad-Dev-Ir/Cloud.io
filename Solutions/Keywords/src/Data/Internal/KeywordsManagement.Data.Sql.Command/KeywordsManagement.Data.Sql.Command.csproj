@@ -21,7 +21,7 @@
 
 	<ItemGroup>
 		<Folder Include="Data\Setup\Models\Keyword\Class\" />
-		<Folder Include="Data\Setup\Models\Service\Class\" />
+		<Folder Include="Data\Setup\Models\NewsService\Class\" />
 	</ItemGroup>
 
 </Project>

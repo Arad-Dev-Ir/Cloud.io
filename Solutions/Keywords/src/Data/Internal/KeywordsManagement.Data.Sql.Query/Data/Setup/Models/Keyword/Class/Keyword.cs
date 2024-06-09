@@ -2,10 +2,10 @@
 
 using Cloud.Core.Models;
 
-public class Keyword : Model
+public sealed record Keyword : Record
 {
-    public long Id { get; set; }
-    public Guid Code { get; set; }
-    public string Title { get; set; } = Empty;
-    public string State { get; set; } = Empty;
+    public long Id { get; init; }
+    public Guid Code { get; init; }
+    public string Title { get; init; }
+    public string State { get; init; }
 }

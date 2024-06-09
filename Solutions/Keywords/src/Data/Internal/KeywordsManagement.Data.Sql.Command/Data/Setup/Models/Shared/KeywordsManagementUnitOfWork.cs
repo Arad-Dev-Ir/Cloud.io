@@ -2,8 +2,6 @@
 
 using Cloud.Web.Data.Sql.Command;
 
-public class KeywordsManagementUnitOfWork : UnitOfWork<KeywordsManagementCommandContext>
-{
-    public KeywordsManagementUnitOfWork(KeywordsManagementCommandContext context) : base(context)
-    { }
-}
+public class KeywordsManagementUnitOfWork(KeywordsManagementCommandContext context) :
+    UnitOfWork<KeywordsManagementCommandContext>(context)
+{ }

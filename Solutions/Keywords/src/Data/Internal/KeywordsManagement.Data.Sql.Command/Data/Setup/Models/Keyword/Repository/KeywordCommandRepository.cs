@@ -5,8 +5,6 @@ using Core.Keyword.Contracts;
 using Sql.Commands;
 using Keyword = Core.Keyword.Models.Keyword;
 
-public class KeywordCommandRepository : CommandRepository<KeywordsManagementCommandContext, Keyword>, IKeywordCommandRepository
-{
-    public KeywordCommandRepository(KeywordsManagementCommandContext context) : base(context)
-    { }
-}
+public sealed class KeywordCommandRepository(KeywordsManagementCommandContext context) :
+    CommandRepository<KeywordsManagementCommandContext, Keyword>(context), IKeywordCommandRepository
+{ }
