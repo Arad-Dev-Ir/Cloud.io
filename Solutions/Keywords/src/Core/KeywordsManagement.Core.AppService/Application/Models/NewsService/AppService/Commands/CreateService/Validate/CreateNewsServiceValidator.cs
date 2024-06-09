@@ -5,7 +5,7 @@ using Cloud.Web.Core.AppService;
 using KeywordsManagement.Core.NewsService.Contracts;
 using Models;
 
-public class CreateNewsServiceValidator : Validator<CreateNewsService>
+public sealed class CreateNewsServiceValidator : Validator<CreateNewsService>
 {
     protected override void Initialize()
     {

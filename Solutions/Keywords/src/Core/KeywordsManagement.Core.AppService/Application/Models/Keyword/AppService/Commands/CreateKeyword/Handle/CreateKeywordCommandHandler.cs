@@ -5,7 +5,7 @@ using Cloud.Web.Core.Contract;
 using Contracts;
 using Models;
 
-public class CreateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<CreateKeyword, long>
+public sealed class CreateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<CreateKeyword, long>
 {
     private readonly IKeywordCommandRepository _repo = repo;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

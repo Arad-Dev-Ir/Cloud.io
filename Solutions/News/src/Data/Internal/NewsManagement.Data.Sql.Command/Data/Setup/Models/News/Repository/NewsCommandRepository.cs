@@ -3,10 +3,8 @@
 using Cloud.Web.Data.Sql.Command;
 using Core.News.Contracts;
 using Sql.Commands;
-using News = Core.News.Models.News;
+using Core.News.Models;
 
-public class NewsCommandRepository : CommandRepository<NewsManagementCommandContext, News>, INewsCommandRepository
-{
-    public NewsCommandRepository(NewsManagementCommandContext context) : base(context)
-    { }
-}
+public sealed class NewsCommandRepository(NewsManagementCommandContext context) :
+    CommandRepository<NewsManagementCommandContext, News>(context), INewsCommandRepository
+{ }

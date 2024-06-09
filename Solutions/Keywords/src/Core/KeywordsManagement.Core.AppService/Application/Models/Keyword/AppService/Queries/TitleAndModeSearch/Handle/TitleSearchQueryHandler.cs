@@ -4,7 +4,7 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class TitleSearchQueryHandler(IKeywordQueryRepository repo) : QueryHandler<TitleAndModeSearch, PagedData<TitleAndModeSearchResult>>
+public sealed class TitleSearchQueryHandler(IKeywordQueryRepository repo) : QueryHandler<TitleAndModeSearch, PagedData<TitleAndModeSearchResult>>
 {
     private readonly IKeywordQueryRepository _repo = repo;
 

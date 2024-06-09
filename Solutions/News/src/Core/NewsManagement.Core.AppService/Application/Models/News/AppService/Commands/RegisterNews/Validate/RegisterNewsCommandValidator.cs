@@ -3,22 +3,20 @@
 using FluentValidation;
 using Cloud.Web.Core.AppService;
 using Contracts;
-using NewsTitle = Models.NewsTitle;
-using NewsDescription = Models.NewsDescription;
-using NewsBody = Models.NewsBody;
+using Models;
 
-public class RegisterNewsCommandValidator : Validator<RegisterNews>
+public sealed class RegisterNewsCommandValidator : Validator<RegisterNews>
 {
     protected override void Initialize()
     {
-        TitleValidation();
-        DescriptionValidation();
-        BodyValidation();
+        ValidateTitle();
+        ValidateDescription();
+        ValidateBody();
     }
 
     #region Methods
 
-    private void TitleValidation()
+    private void ValidateTitle()
     {
         var property = nameof(NewsTitle);
         var minChar = 3;
@@ -30,7 +28,7 @@ public class RegisterNewsCommandValidator : Validator<RegisterNews>
         .MaximumLength(maxChar).WithMessage($"The maximum length for {property} can be {maxChar} character(s).");
     }
 
-    private void DescriptionValidation()
+    private void ValidateDescription()
     {
         var property = nameof(NewsDescription);
         var minChar = 0;
@@ -42,7 +40,7 @@ public class RegisterNewsCommandValidator : Validator<RegisterNews>
         .MaximumLength(maxChar).WithMessage($"The maximum length for {property} can be {maxChar} character(s).");
     }
 
-    private void BodyValidation()
+    private void ValidateBody()
     {
         var property = nameof(NewsBody);
         //var minChar = 0;

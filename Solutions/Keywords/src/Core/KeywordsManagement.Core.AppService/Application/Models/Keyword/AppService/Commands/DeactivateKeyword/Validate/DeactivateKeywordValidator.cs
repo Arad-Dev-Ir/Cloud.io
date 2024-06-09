@@ -3,7 +3,7 @@
 using Cloud.Web.Core.AppService;
 using Contracts;
 
-public class DeactivateKeywordValidator : Validator<DeactivateKeyword>
+public sealed class DeactivateKeywordValidator : Validator<DeactivateKeyword>
 {
     protected override void Initialize()
     { }

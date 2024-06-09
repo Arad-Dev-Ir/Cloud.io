@@ -5,7 +5,7 @@ using Cloud.Web.Core.Contract;
 using Contracts;
 using Models;
 
-public class CreateNewsServiceCommandHandler(INewsServiceCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<CreateNewsService, long>
+public sealed class CreateNewsServiceCommandHandler(INewsServiceCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<CreateNewsService, long>
 {
     private readonly INewsServiceCommandRepository _repo = repo;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

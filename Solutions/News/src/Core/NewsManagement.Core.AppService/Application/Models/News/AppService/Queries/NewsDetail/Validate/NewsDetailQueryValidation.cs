@@ -3,7 +3,7 @@
 using Cloud.Web.Core.AppService;
 using Contracts;
 
-public class NewsDetailQueryValidation : Validator<NewsDetail>
+public sealed class NewsDetailQueryValidation : Validator<NewsDetail>
 {
     protected override void Initialize()
     { }

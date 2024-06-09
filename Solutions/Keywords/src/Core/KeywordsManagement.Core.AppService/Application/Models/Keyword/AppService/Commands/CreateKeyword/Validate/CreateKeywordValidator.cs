@@ -5,7 +5,7 @@ using Cloud.Web.Core.AppService;
 using Contracts;
 using Models;
 
-public class CreateKeywordValidator : Validator<CreateKeyword>
+public sealed class CreateKeywordValidator : Validator<CreateKeyword>
 {
     protected override void Initialize()
     => ValidateTitle();

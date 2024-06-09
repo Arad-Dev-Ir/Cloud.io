@@ -4,12 +4,9 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class NewsDetailQueryHandler : QueryHandler<NewsDetail, NewsDetailResult>
+public sealed class NewsDetailQueryHandler(INewsQueryRepository repo) : QueryHandler<NewsDetail, NewsDetailResult>
 {
-    private readonly INewsQueryRepository _repo;
-
-    public NewsDetailQueryHandler(INewsQueryRepository repo)
-    => _repo = repo;
+    private readonly INewsQueryRepository _repo = repo;
 
     public override async Task<QueryResponse<NewsDetailResult>> ExecuteAsync(NewsDetail query, CancellationToken cancellationToken)
     {

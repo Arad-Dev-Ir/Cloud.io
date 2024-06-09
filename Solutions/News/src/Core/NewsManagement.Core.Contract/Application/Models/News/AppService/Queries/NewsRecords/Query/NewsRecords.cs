@@ -2,5 +2,5 @@
 
 using Cloud.Web.Core.Contract;
 
-public record NewsRecords : PageQuery<PagedData<NewsRecordsResult>>
+public sealed record NewsRecords : PageQuery<PagedData<NewsRecordsResult>>
 { }

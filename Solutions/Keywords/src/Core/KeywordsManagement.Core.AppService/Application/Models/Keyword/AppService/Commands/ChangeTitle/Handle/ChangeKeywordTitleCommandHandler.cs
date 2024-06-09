@@ -4,7 +4,7 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class ChangeKeywordTitleCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<ChangeKeywordTitle>
+public sealed class ChangeKeywordTitleCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<ChangeKeywordTitle>
 {
     private readonly IKeywordCommandRepository _repo = repo;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

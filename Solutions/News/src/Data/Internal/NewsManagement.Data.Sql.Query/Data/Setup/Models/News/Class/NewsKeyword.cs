@@ -4,25 +4,25 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Cloud.Core.Models;
 
-public class NewsKeyword : Model
+public sealed record NewsKeyword : Record
 {
-    public long Id { get; set; }
-    public Guid Code { get; set; }
+    public long Id { get; init; }
+    public Guid Code { get; init; }
 
 
     [ForeignKey(nameof(News))]
-    public long NewsId { get; set; }
-    public News News { get; set; }
+    public long NewsId { get; init; }
+    public News News { get; init; }
 
     [ForeignKey(nameof(Keyword))]
-    public Guid KeywordCode { get; set; }
-    public Keyword Keyword { get; set; }
+    public Guid KeywordCode { get; init; }
+    public Keyword Keyword { get; init; }
 }
 
 [Table("Keywords", Schema = "dbo")]
-public class Keyword : Model
+public sealed record Keyword : Record
 {
     [Key]
-    public Guid Code { get; set; }
-    public string Title { get; set; } = Empty;
+    public Guid Code { get; init; }
+    public string Title { get; init; }
 }

@@ -7,11 +7,9 @@ using Cloud.Web.Data.Sql.Query;
 using Core.News.Contracts;
 using Sql.Queries;
 
-public class NewsQueryRepository : QueryRepository<NewsManagementQueryContext>, INewsQueryRepository
+public class NewsQueryRepository(NewsManagementQueryContext context) :
+    QueryRepository<NewsManagementQueryContext>(context), INewsQueryRepository
 {
-    public NewsQueryRepository(NewsManagementQueryContext context) : base(context)
-    { }
-
     public async Task<NewsDetailResult> Query(NewsDetail query, CancellationToken cancellationToken)
     {
         var result = await Context

@@ -3,7 +3,7 @@
 using Cloud.Web.Core.AppService;
 using Contracts;
 
-public class TitleSearchValidation : Validator<TitleAndModeSearch>
+public sealed class TitleSearchValidation : Validator<TitleAndModeSearch>
 {
     protected override void Initialize()
     { }

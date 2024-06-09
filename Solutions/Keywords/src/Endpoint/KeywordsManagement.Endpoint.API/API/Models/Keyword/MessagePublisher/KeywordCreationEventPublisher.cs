@@ -6,7 +6,7 @@ using Cloud.Core;
 using Cloud.Web.Data.Sql.Command;
 using Data.Sql.Commands;
 
-public class KeywordCreationEventPublisher : BackgroundService
+public sealed class KeywordCreationEventPublisher : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly KeywordsManagementCommandContext _context;

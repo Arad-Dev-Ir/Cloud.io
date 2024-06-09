@@ -3,19 +3,15 @@
 using Microsoft.EntityFrameworkCore;
 using Cloud.Web.Data.Sql.Command;
 using System.Reflection;
-using News = Core.News.Models.News;
+using Core.News.Models;
 
-
-public class NewsManagementCommandContext : OutboxCommandContext
+public class NewsManagementCommandContext(DbContextOptions<NewsManagementCommandContext> options) : OutboxCommandContext(options)
 {
     public DbSet<News> News => Set<News>();
-
-    public NewsManagementCommandContext(DbContextOptions<NewsManagementCommandContext> options) : base(options)
-    { }
 
     protected override void OnModelCreating(ModelBuilder builder)
     => base.OnModelCreating(SetConfigurations(builder));
 
-    private ModelBuilder SetConfigurations(ModelBuilder builder)
+    private static ModelBuilder SetConfigurations(ModelBuilder builder)
     => builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 }

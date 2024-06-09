@@ -2,14 +2,14 @@
 
 using Cloud.Core.Models;
 
-public class News : Model
+public sealed record News : Record
 {
-    public long Id { get; set; }
-    public Guid Code { get; set; }
-    public string Title { get; set; } = Empty;
-    public string Description { get; set; } = Empty;
-    public string Body { get; set; } = Empty;
-    public DateTime CreatedDateTime { get; set; }
+    public long Id { get; init; }
+    public Guid Code { get; init; }
+    public string Title { get; init; }
+    public string Description { get; init; }
+    public string Body { get; init; }
+    public DateTime CreatedDateTime { get; init; }
 
-    public List<NewsKeyword> Keywords { get; set; } = [];
+    public List<NewsKeyword> Keywords { get; init; } = [];
 }

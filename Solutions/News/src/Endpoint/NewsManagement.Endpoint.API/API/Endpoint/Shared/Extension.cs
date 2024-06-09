@@ -13,7 +13,7 @@ using Cloud.Web.Endpoint.API;
 using System.IO.Compression;
 using Data.Sql.Commands;
 using Data.Sql.Queries;
-using Endpoint.News.APIs;
+using News.APIs;
 
 public static class Extension
 {
@@ -29,8 +29,8 @@ public static class Extension
         .AddMicrosoftSerializer()
         .AddInMemoryCache()
         .AddDbContext(configuration)
-        .AddDiscoveryClient(configuration)
-        .AddHostedService<KeywordCreationEventReceiver>()
+        //.AddDiscoveryClient(configuration)
+        //.AddHostedService<KeywordCreationEventReceiver>()
         .AddResponseCompression()
         .AddSwaggerGen();
 

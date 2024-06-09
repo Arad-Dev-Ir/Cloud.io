@@ -5,7 +5,7 @@ using Cloud.Web.Core.AppService;
 using Contracts;
 using Models;
 
-public class ChangeKeywordTitleValidator : Validator<ChangeKeywordTitle>
+public sealed class ChangeKeywordTitleValidator : Validator<ChangeKeywordTitle>
 {
     protected override void Initialize()
     => ValidateTitle();

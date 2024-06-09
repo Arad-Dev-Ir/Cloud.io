@@ -1,6 +1,6 @@
 ﻿namespace NewsManagement.Core.News.Contracts;
 
-using News = Models.News;
+using Models;
 
 public interface INewsCommandRepository
 {

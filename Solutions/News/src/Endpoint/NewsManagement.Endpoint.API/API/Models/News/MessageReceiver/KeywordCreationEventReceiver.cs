@@ -7,7 +7,7 @@ using Cloud.Core;
 using Cloud.Core.Extensions.Serialization;
 using Cloud.Core.Models;
 
-public class KeywordCreationEventReceiver : BackgroundService
+public sealed class KeywordCreationEventReceiver : BackgroundService
 {
     private readonly IJsonSerializer _serializer;
     private readonly SqlConnection _sqlConnection;

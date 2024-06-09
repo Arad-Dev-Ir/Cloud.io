@@ -3,36 +3,24 @@
 using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
-using News = Models.News;
-using Keyword = Models.Keyword;
+using Models;
 
-public class RegisterNewsCommandHandler : CommandHandler<RegisterNews, long>
+public sealed class RegisterNewsCommandHandler(INewsCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<RegisterNews, long>
 {
-    private readonly INewsCommandRepository _repo;
-    private readonly IUnitOfWork _unitOfWork;
-
-    public RegisterNewsCommandHandler(INewsCommandRepository repo, IUnitOfWork unitOfWork)
-    {
-        _repo = repo;
-        _unitOfWork = unitOfWork;
-    }
-
-    public void Initialize()
-    { }
+    private readonly INewsCommandRepository _repo = repo;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public override async Task<CommandResponse<long>> ExecuteAsync(RegisterNews command, CancellationToken cancellationToken)
     {
-        var result = default(CommandResponse<long>);
-
         var keywordsCodes = command.KeywordsCodes
-        .Select(e => Keyword.Instance(e))
+        .Select(Keyword.Instance)
         .ToList();
 
         var news = News.Instance(command.Title, command.Description, command.Body, keywordsCodes);
         _repo.Add(news);
         await _unitOfWork.SaveAsync(cancellationToken);
 
-        result = await OkAsync(news.Id.Value);
+        var result = await OkAsync(news.Id.Value);
         return result;
     }
 }

@@ -2,24 +2,24 @@
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Cloud.Web.Data.Sql.Command;
-using News = Core.News.Models.News;
+using Core.News.Models;
 
-public class NewsConfiguration : Configuration<News>
+public sealed class NewsConfiguration : Configuration<News>
 {
     public override void Configure(EntityTypeBuilder<News> builder)
     => Initialize(builder);
 
-    private void Initialize(EntityTypeBuilder<News> builder)
+    private static void Initialize(EntityTypeBuilder<News> builder)
     {
         builder.Property(e => e.Title)
         .HasMaxLength(250)
-        .HasConversion<TitleConversion>();
+        .HasConversion<NewsTitleConversion>();
 
         builder.Property(e => e.Description)
         .HasMaxLength(500)
-        .HasConversion<DescriptionConversion>();
+        .HasConversion<NewsDescriptionConversion>();
 
         builder.Property(e => e.Body)
-       .HasConversion<BodyConversion>();
+       .HasConversion<NewsBodyConversion>();
     }
 }

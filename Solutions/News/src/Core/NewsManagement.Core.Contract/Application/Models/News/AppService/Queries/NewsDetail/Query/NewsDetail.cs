@@ -2,7 +2,7 @@
 
 using Cloud.Web.Core.Contract;
 
-public class NewsDetail : IQuery<NewsDetailResult>
+public sealed record NewsDetail : IQuery<NewsDetailResult>
 {
-    public long Id { get; set; }
+    public long Id { get; init; }
 }

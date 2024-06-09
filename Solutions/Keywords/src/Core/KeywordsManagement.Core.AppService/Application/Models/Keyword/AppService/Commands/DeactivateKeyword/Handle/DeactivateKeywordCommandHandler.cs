@@ -4,7 +4,7 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class DeactivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<DeactivateKeyword>
+public sealed class DeactivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<DeactivateKeyword>
 {
     private readonly IKeywordCommandRepository _repo = repo;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;

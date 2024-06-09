@@ -4,7 +4,7 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class ActivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<ActivateKeyword>
+public sealed class ActivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<ActivateKeyword>
 {
     private readonly IKeywordCommandRepository _repo = repo;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
