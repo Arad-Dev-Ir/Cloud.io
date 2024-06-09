@@ -3,16 +3,16 @@
 using FluentValidation;
 using Cloud.Web.Core.AppService;
 using Contracts;
-using KeywordTitle = Models.KeywordTitle;
+using Models;
 
 public class CreateKeywordValidator : Validator<CreateKeyword>
 {
     protected override void Initialize()
-    => TitleValidation();
+    => ValidateTitle();
 
     #region Methods
 
-    private void TitleValidation()
+    private void ValidateTitle()
     {
         var property = nameof(KeywordTitle);
         var minChar = 3;

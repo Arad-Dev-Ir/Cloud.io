@@ -1,41 +1,30 @@
 ﻿namespace KeywordsManagement.Core.Keyword.AppServices;
 
-using Cloud.Core;
 using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public class ActivateKeywordCommandHandler : CommandHandler<ActivateKeyword>
+public class ActivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<ActivateKeyword>
 {
-    private readonly IKeywordCommandRepository _repo;
-    private readonly IUnitOfWork _unitOfWork;
-
-    public ActivateKeywordCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork)
-    {
-        _repo = repo;
-        _unitOfWork = unitOfWork;
-    }
-
-    private void Initialize()
-    { }
+    private readonly IKeywordCommandRepository _repo = repo;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public override async Task<CommandResponse> ExecuteAsync(ActivateKeyword command, CancellationToken cancellationToken)
     {
-        var result = Response;
+        CommandResponse? result;
         var id = command.Id;
         var keyword = await _repo.GetGraphAsync(id, cancellationToken);
-        await keyword.IsNull(
-        async () =>
-        {
-            AddMessage($"There is not any entity with Id: {id}.");
-            result = await SetResponseAsync(ServiceStatus.NotFound);
-        },
-        async () =>
+        if (keyword is not null)
         {
             keyword.Activate();
             await _unitOfWork.SaveAsync(cancellationToken);
             result = await OkAsync();
-        });
+        }
+        else
+        {
+            AddMessage($"There is not any entity with Id: {id}.");
+            result = await SetResponseAsync(ServiceStatus.NotFound);
+        }
         return result;
     }
 }

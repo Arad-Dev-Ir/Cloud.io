@@ -2,21 +2,20 @@
 
 using FluentValidation;
 using Cloud.Web.Core.AppService;
-using Contracts;
-using NewsServiceTitle = Models.NewsServiceTitle;
-using NewsServiceName = Models.NewsServiceName;
+using KeywordsManagement.Core.NewsService.Contracts;
+using Models;
 
 public class CreateNewsServiceValidator : Validator<CreateNewsService>
 {
     protected override void Initialize()
     {
-        TitleValidation();
-        NameValidation();
+        ValidateTitle();
+        ValidateName();
     }
 
     #region Methods
 
-    private void TitleValidation()
+    private void ValidateTitle()
     {
         var property = nameof(NewsServiceTitle);
         var minChar = 3;
@@ -28,7 +27,7 @@ public class CreateNewsServiceValidator : Validator<CreateNewsService>
         .MaximumLength(maxChar).WithMessage($"The maximum length for {property} can be {maxChar} character(s).");
     }
 
-    private void NameValidation()
+    private void ValidateName()
     {
         var property = nameof(NewsServiceName);
         var minChar = 3;

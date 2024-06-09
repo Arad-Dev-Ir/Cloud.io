@@ -4,8 +4,8 @@ using Cloud.Core.Models;
 
 public record TitleAndModeSearchResult : Record
 {
-    public long Id { get; set; }
-    public Guid Code { get; set; }
-    public string Title { get; set; }
-    public string Mode { get; set; }
+    public long Id { get; init; }
+    public Guid Code { get; init; }
+    public string Title { get; init; }
+    public string State { get; init; }
 }

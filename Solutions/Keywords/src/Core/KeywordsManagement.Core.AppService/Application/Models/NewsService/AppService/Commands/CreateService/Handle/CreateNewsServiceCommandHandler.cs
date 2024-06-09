@@ -3,29 +3,20 @@
 using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
-using Service = Models.NewsService;
+using Models;
 
-public class CreateNewsServiceCommandHandler : CommandHandler<CreateNewsService, long>
+public class CreateNewsServiceCommandHandler(INewsServiceCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<CreateNewsService, long>
 {
-    private readonly INewsServiceCommandRepository _repo;
-    private readonly IUnitOfWork _unitOfWork;
-
-    public CreateNewsServiceCommandHandler(INewsServiceCommandRepository repo, IUnitOfWork unitOfWork)
-    {
-        _repo = repo;
-        _unitOfWork = unitOfWork;
-    }
-
-    private void Initialize()
-    { }
+    private readonly INewsServiceCommandRepository _repo = repo;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public override async Task<CommandResponse<long>> ExecuteAsync(CreateNewsService command, CancellationToken cancellationToken)
     {
-        var result = default(CommandResponse<long>);
-        var service = Service.Instance(command.Title, command.Name);
+        var service = NewsService.Instance(command.Title, command.Name);
         await _repo.AddAsync(service, cancellationToken);
         await _unitOfWork.SaveAsync(cancellationToken);
-        result = await OkAsync(service.Id.Value);
+
+        var result = await OkAsync(service.Id.Value);
         return result;
     }
 }

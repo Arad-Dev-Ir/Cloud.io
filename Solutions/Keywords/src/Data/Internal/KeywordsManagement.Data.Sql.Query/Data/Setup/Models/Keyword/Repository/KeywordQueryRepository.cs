@@ -22,9 +22,9 @@ public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryCon
         var titleCondition = title.IsNotEmpty();
         lookup = lookup.Where(titleCondition, e => e.Title.Contains(title));
 
-        var mode = query.Mode;
-        var modeCondition = mode.IsNotEmpty();
-        lookup = lookup.Where(modeCondition, e => e.Mode == mode);
+        var state = query.State;
+        var modeCondition = state.IsNotEmpty();
+        lookup = lookup.Where(modeCondition, e => e.State == state);
 
         result.Records = await lookup
         .OrderBy(query.OrderBy, query.Ascending)
@@ -35,7 +35,7 @@ public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryCon
             Id = e.Id,
             Code = e.Code,
             Title = e.Title,
-            Mode = e.Mode,
+            State = e.State,
         })
         .ToListAsync(cancellationToken);
 
