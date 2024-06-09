@@ -3,9 +3,9 @@
 using FluentValidation;
 using Cloud.Web.Core.AppService;
 using Contracts;
-using Title = Models.Title;
-using Description = Models.Description;
-using Body = Models.Body;
+using NewsTitle = Models.NewsTitle;
+using NewsDescription = Models.NewsDescription;
+using NewsBody = Models.NewsBody;
 
 public class RegisterNewsCommandValidator : Validator<RegisterNews>
 {
@@ -20,7 +20,7 @@ public class RegisterNewsCommandValidator : Validator<RegisterNews>
 
     private void TitleValidation()
     {
-        var property = nameof(Title);
+        var property = nameof(NewsTitle);
         var minChar = 3;
         var maxChar = 250;
 
@@ -32,7 +32,7 @@ public class RegisterNewsCommandValidator : Validator<RegisterNews>
 
     private void DescriptionValidation()
     {
-        var property = nameof(Description);
+        var property = nameof(NewsDescription);
         var minChar = 0;
         var maxChar = 500;
 
@@ -44,7 +44,7 @@ public class RegisterNewsCommandValidator : Validator<RegisterNews>
 
     private void BodyValidation()
     {
-        var property = nameof(Body);
+        var property = nameof(NewsBody);
         //var minChar = 0;
         //var maxChar = 500;
 

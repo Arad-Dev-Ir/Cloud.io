@@ -3,7 +3,7 @@
 using FluentValidation;
 using Cloud.Web.Core.AppService;
 using Contracts;
-using Title = Models.Title;
+using KeywordTitle = Models.KeywordTitle;
 
 public class ChangeKeywordTitleValidator : Validator<ChangeKeywordTitle>
 {
@@ -14,7 +14,7 @@ public class ChangeKeywordTitleValidator : Validator<ChangeKeywordTitle>
 
     private void TitleValidation()
     {
-        var property = nameof(Title);
+        var property = nameof(KeywordTitle);
         var minChar = 2;
         var maxChar = 100;
 

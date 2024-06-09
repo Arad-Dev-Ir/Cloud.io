@@ -3,30 +3,30 @@
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public record Title : Element
+public sealed record NewsServiceTitle : Element
 {
     public string Value { get; }
 
     #region Initialize
 
-    private Title()
+    private NewsServiceTitle()
     { }
-    private Title(string value)
+    private NewsServiceTitle(string value)
     {
         OnCheckTitle(value);
         Value = value;
     }
 
-    public static Title Instance(string value)
+    public static NewsServiceTitle Instance(string value)
     => new(value);
 
     #endregion
 
     #region Conversion operators
 
-    public static implicit operator Title(string value)
+    public static implicit operator NewsServiceTitle(string value)
     => new(value);
-    public static explicit operator string(Title title)
+    public static explicit operator string(NewsServiceTitle title)
     => title.Value;
 
     #endregion
@@ -35,7 +35,7 @@ public record Title : Element
 
     private void OnCheckTitle(string value)
     {
-        var element = nameof(Title);
+        var element = nameof(NewsServiceTitle);
         if (value.IsEmpty())
             throw new InvalidElementException("The value for {0} cannot be null!", element);
 

@@ -1,10 +1,10 @@
 ﻿namespace KeywordsManagement.Data.Sql.NewsService.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using Name = Core.NewsService.Models.Name;
+using NewsServiceName = Core.NewsService.Models.NewsServiceName;
 
-public class NameConversion : Conversion<Name, string>
+public class NameConversion : Conversion<NewsServiceName, string>
 {
-    public NameConversion() : base(e => e.Value, e => Name.Instance(e))
+    public NameConversion() : base(e => e.Value, e => NewsServiceName.Instance(e))
     { }
 }

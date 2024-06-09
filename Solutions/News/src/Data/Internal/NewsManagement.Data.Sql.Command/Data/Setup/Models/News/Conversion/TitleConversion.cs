@@ -1,10 +1,10 @@
 ﻿namespace NewsManagement.Data.Sql.News.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using Title = Core.News.Models.Title;
+using NewsTitle = Core.News.Models.NewsTitle;
 
-internal class TitleConversion : Conversion<Title, string>
+internal class TitleConversion : Conversion<NewsTitle, string>
 {
-    public TitleConversion() : base(e => e.Value, e => Title.Instance(e))
+    public TitleConversion() : base(e => e.Value, e => NewsTitle.Instance(e))
     { }
 }

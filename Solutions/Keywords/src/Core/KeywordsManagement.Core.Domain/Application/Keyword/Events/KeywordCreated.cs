@@ -2,7 +2,9 @@
 
 using Cloud.Core.Models;
 
-public record KeywordCreated(Guid Code, string Title) : Event
+public sealed record KeywordCreated(Guid Code, string Title) : Event
 {
+    public Guid Code { get; } = Code;
+    public string Title { get; } = Title;
     public string State { get; } = KeywordState.Preview.Value;
 }

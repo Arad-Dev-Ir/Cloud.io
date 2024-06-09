@@ -1,41 +1,41 @@
-﻿namespace KeywordsManagement.Core.Keyword.Models;
+﻿namespace KeywordsManagement.Core.NewsService.Models;
 
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public record Title : Element
+public sealed record NewsServiceName : Element
 {
     public string Value { get; }
 
     #region Initialize
 
-    private Title()
+    private NewsServiceName()
     { }
-    private Title(string value)
+    private NewsServiceName(string value)
     {
-        OnCheckTitle(value);
+        OnCheckName(value);
         Value = value;
     }
 
-    public static Title Instance(string value)
+    public static NewsServiceName Instance(string value)
     => new(value);
 
     #endregion
 
     #region Conversion operators
 
-    public static implicit operator Title(string value)
+    public static implicit operator NewsServiceName(string value)
     => new(value);
-    public static explicit operator string(Title title)
-    => title.Value;
+    public static explicit operator string(NewsServiceName name)
+    => name.Value;
 
     #endregion
 
     #region Methods
 
-    private void OnCheckTitle(string value)
+    private void OnCheckName(string value)
     {
-        var element = nameof(Title);
+        var element = nameof(NewsServiceName);
         if (value.IsEmpty())
             throw new InvalidElementException("The value for {0} cannot be null!", element);
 

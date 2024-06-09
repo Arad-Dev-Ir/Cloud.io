@@ -9,8 +9,8 @@ public sealed record ProcessMode : Enumer
     public static ProcessMode Registered { get; private set; } = new(nameof(Registered));
     public static ProcessMode Processed { get; private set; } = new(nameof(Processed));
 
-
-    public static List<ProcessMode> Items { get; private set; } = new();
+    private static readonly List<ProcessMode> _items = [];
+    public static IReadOnlyList<ProcessMode> Items => _items;
 
     public override string Display
     {
@@ -29,19 +29,30 @@ public sealed record ProcessMode : Enumer
 
     #region Initialize
 
-    public ProcessMode() : base(Atom.Empty)
+    private ProcessMode() : base(Atom.Empty)
     { }
-    public ProcessMode(string value) : base(value.IsEmpty() ? Atom.Empty : value)
+    private ProcessMode(string value) : base(value.IsEmpty() ? Atom.Empty : value)
     { }
     static ProcessMode()
     => Initialize();
 
     static void Initialize()
     {
-        Items.Add(new ProcessMode());
-        Items.Add(new(nameof(Raised)));
-        Items.Add(new(nameof(Registered)));
-        Items.Add(new(nameof(Processed)));
+        _items.AddRange(
+        [
+            new ProcessMode(),
+            new(nameof(Raised)),
+            new(nameof(Registered)),
+            new(nameof(Processed)),
+        ]);
+    }
+
+    public static ProcessMode Instance(string mode)
+    {
+        if (_items.Contains(new(mode)))
+            return new ProcessMode(mode);
+        else
+            throw new Exception($"{mode} is invalid!");
     }
 
     #endregion

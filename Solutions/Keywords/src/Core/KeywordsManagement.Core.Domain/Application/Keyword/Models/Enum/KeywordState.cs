@@ -9,8 +9,8 @@ public sealed record KeywordState : Enumer
     public static KeywordState Active { get; private set; } = new(nameof(Active));
     public static KeywordState Inactive { get; private set; } = new(nameof(Inactive));
 
-
-    public static List<KeywordState> Items { get; private set; } = [];
+    private static List<KeywordState> _items = [];
+    public static IReadOnlyList<KeywordState> Items => _items;
 
     public override string Display
     => Value switch
@@ -23,19 +23,30 @@ public sealed record KeywordState : Enumer
 
     #region Initialize
 
-    public KeywordState() : base(Atom.Empty)
+    private KeywordState() : base(Atom.Empty)
     { }
-    public KeywordState(string value) : base(value.IsEmpty() ? Atom.Empty : value)
+    private KeywordState(string value) : base(value.IsEmpty() ? Atom.Empty : value)
     { }
     static KeywordState()
     => Initialize();
 
     static void Initialize()
     {
-        Items.Add(new KeywordState());
-        Items.Add(new(nameof(Preview)));
-        Items.Add(new(nameof(Active)));
-        Items.Add(new(nameof(Inactive)));
+        _items.AddRange(
+        [
+            new KeywordState(),
+            new(nameof(Preview)),
+            new(nameof(Active)),
+            new(nameof(Inactive)),
+        ]);
+    }
+
+    public static KeywordState Instance(string state)
+    {
+        if (_items.Contains(new(state)))
+            return new KeywordState(state);
+        else
+            throw new Exception($"{state} is invalid!");
     }
 
     #endregion

@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Cloud.Web.Core.Contract;
 using Cloud.Web.Endpoint.API;
-using Core.Keyword.Contracts;
+using KeywordsManagement.Core.Keyword.Contracts;
 
 [Route("api/[controller]")]
 public class KeywordController : ApiController

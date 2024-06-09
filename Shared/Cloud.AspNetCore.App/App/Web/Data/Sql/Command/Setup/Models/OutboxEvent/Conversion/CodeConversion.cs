@@ -2,6 +2,6 @@
 
 internal class ProcessModeConversion : Conversion<ProcessMode, string>
 {
-    public ProcessModeConversion() : base(e => e.Value, e => new(e))
+    public ProcessModeConversion() : base(e => e.Value, e => ProcessMode.Instance(e))
     { }
 }

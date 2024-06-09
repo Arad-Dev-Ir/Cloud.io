@@ -1,10 +1,10 @@
 ﻿namespace KeywordsManagement.Data.Sql.Keyword.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using Title = Core.Keyword.Models.Title;
+using KeywordTitle = Core.Keyword.Models.KeywordTitle;
 
-internal class TitleConversion : Conversion<Title, string>
+internal class TitleConversion : Conversion<KeywordTitle, string>
 {
-    public TitleConversion() : base(e => e.Value, e => Title.Instance(e))
+    public TitleConversion() : base(e => e.Value, e => KeywordTitle.Instance(e))
     { }
 }

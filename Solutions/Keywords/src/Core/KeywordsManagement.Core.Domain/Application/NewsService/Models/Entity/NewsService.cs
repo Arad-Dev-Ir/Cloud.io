@@ -2,14 +2,14 @@
 
 using Cloud.Web.Core;
 
-public class NewsService : Module
+public sealed class NewsService : Module
 {
-    public Title Title { get; private set; }
-    public Name Name { get; private set; }
+    public NewsServiceTitle Title { get; private set; }
+    public NewsServiceName Name { get; private set; }
 
     #region Initialize
 
-    private NewsService(Title title, Name name)
+    private NewsService(NewsServiceTitle title, NewsServiceName name)
     {
         Title = title;
         Name = name;
@@ -17,7 +17,7 @@ public class NewsService : Module
         OnCreateService();
     }
 
-    public static NewsService Instance(Title title, Name name)
+    public static NewsService Instance(NewsServiceTitle title, NewsServiceName name)
     => new(title, name);
     public static NewsService Instance(string title, string name)
     => new(title, name);

@@ -1,10 +1,10 @@
 ﻿namespace NewsManagement.Data.Sql.News.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using Description = Core.News.Models.Description;
+using NewsDescription = Core.News.Models.NewsDescription;
 
-internal class DescriptionConversion : Conversion<Description, string>
+internal class DescriptionConversion : Conversion<NewsDescription, string>
 {
-    public DescriptionConversion() : base(e => e.Value, e => Description.Instance(e))
+    public DescriptionConversion() : base(e => e.Value, e => NewsDescription.Instance(e))
     { }
 }

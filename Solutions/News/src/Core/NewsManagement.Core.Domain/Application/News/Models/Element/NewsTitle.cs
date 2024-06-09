@@ -3,30 +3,30 @@
 using Cloud.Core;
 using Cloud.Core.Models;
 
-public record Body : Element
+public sealed record NewsTitle : Element
 {
     public string Value { get; }
 
     #region Initialize
 
-    private Body()
+    private NewsTitle()
     { }
-    private Body(string value)
+    private NewsTitle(string value)
     {
         OnCheckTitle(value);
         Value = value;
     }
 
-    public static Body Instance(string value)
+    public static NewsTitle Instance(string value)
     => new(value);
 
     #endregion
 
     #region Conversion operators
 
-    public static implicit operator Body(string value)
+    public static implicit operator NewsTitle(string value)
     => new(value);
-    public static explicit operator string(Body title)
+    public static explicit operator string(NewsTitle title)
     => title.Value;
 
     #endregion
@@ -35,11 +35,11 @@ public record Body : Element
 
     private void OnCheckTitle(string value)
     {
-        var element = nameof(Body);
+        var element = nameof(NewsTitle);
         if (value.IsEmpty())
             throw new InvalidElementException("The value for {0} cannot be null!", element);
 
-        var minChar = 2;
+        var minChar = 3;
         var maxChar = 250;
         if (!value.IsLengthBetween(minChar, maxChar))
             throw new InvalidElementException("The value length for {0} must be between {1} and {2} characters!", element, $"{minChar}", $"{maxChar}");

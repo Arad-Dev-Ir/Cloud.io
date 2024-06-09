@@ -2,7 +2,7 @@
 
 using Cloud.Core.Models;
 
-public class Keyword : Entity
+public sealed class Keyword : Entity
 {
     public Code KeywordCode { get; private set; }
 

@@ -2,11 +2,11 @@
 
 using Cloud.Web.Core;
 
-public class News : Module
+public sealed class News : Module
 {
-    public Title Title { get; private set; }
-    public Description Description { get; private set; }
-    public Body Body { get; private set; }
+    public NewsTitle Title { get; private set; }
+    public NewsDescription Description { get; private set; }
+    public NewsBody Body { get; private set; }
 
     private readonly List<Keyword> _keywords = [];
     public IReadOnlyList<Keyword> Keywords => _keywords;
@@ -15,7 +15,7 @@ public class News : Module
 
     private News()
     { }
-    private News(Title title, Description description, Body body, IEnumerable<Keyword> keywords)
+    private News(NewsTitle title, NewsDescription description, NewsBody body, IEnumerable<Keyword> keywords)
     {
         Title = title;
         Description = description;
@@ -25,7 +25,7 @@ public class News : Module
         OnCreateBlog();
     }
 
-    public static News Instance(Title title, Description description, Body body, IEnumerable<Keyword> keywords)
+    public static News Instance(NewsTitle title, NewsDescription description, NewsBody body, IEnumerable<Keyword> keywords)
     => new(title, description, body, keywords);
 
     public static News Instance(string title, string description, string body, IEnumerable<Keyword> keywords)

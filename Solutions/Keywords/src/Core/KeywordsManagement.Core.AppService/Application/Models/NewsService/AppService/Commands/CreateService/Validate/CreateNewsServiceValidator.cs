@@ -3,8 +3,8 @@
 using FluentValidation;
 using Cloud.Web.Core.AppService;
 using Contracts;
-using Title = Models.Title;
-using Name = Models.Name;
+using NewsServiceTitle = Models.NewsServiceTitle;
+using NewsServiceName = Models.NewsServiceName;
 
 public class CreateNewsServiceValidator : Validator<CreateNewsService>
 {
@@ -18,7 +18,7 @@ public class CreateNewsServiceValidator : Validator<CreateNewsService>
 
     private void TitleValidation()
     {
-        var property = nameof(Title);
+        var property = nameof(NewsServiceTitle);
         var minChar = 3;
         var maxChar = 50;
 
@@ -30,7 +30,7 @@ public class CreateNewsServiceValidator : Validator<CreateNewsService>
 
     private void NameValidation()
     {
-        var property = nameof(Name);
+        var property = nameof(NewsServiceName);
         var minChar = 3;
         var maxChar = 50;
 

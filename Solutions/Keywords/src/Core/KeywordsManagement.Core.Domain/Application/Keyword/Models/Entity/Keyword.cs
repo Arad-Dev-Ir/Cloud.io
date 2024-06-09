@@ -3,23 +3,23 @@
 using Cloud.Core.Models;
 using Cloud.Web.Core;
 
-public class Keyword : Module
+public sealed class Keyword : Module
 {
-    public Title Title { get; private set; }
+    public KeywordTitle Title { get; private set; }
     public KeywordState State { get; private set; }
 
     #region Initialize
 
     private Keyword()
     { }
-    private Keyword(Title title)
+    private Keyword(KeywordTitle title)
     {
         Title = title;
         State = KeywordState.Preview;
         OnCreateKeyword();
     }
 
-    public static Keyword Instance(Title title)
+    public static Keyword Instance(KeywordTitle title)
     => new(title);
     public static Keyword Instance(string title)
     => new(title);
@@ -29,7 +29,7 @@ public class Keyword : Module
     #region Methods
 
     private const string stateString = nameof(State);
-    public void ChangeTitle(Title title)
+    public void ChangeTitle(KeywordTitle title)
     {
         var action = nameof(ChangeTitle);
         var inactiveMode = KeywordState.Inactive;
