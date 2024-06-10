@@ -29,8 +29,8 @@ public static class Extension
         .AddMicrosoftSerializer()
         .AddInMemoryCache()
         .AddDbContext(configuration)
-        //.AddDiscoveryClient(configuration)
-        //.AddHostedService<KeywordCreationEventReceiver>()
+        .AddDiscoveryClient(configuration)
+        .AddHostedService<KeywordCreationEventReceiver>()
         .AddResponseCompression()
         .AddSwaggerGen();
 

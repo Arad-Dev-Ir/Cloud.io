@@ -12,7 +12,7 @@ using NewsManagement.Data.Sql.Commands;
 namespace NewsManagement.Data.Sql.Command.Migrations
 {
     [DbContext(typeof(NewsManagementCommandContext))]
-    [Migration("20240601073016_Init")]
+    [Migration("20240610064627_Init")]
     partial class Init
     {
         /// <inheritdoc />

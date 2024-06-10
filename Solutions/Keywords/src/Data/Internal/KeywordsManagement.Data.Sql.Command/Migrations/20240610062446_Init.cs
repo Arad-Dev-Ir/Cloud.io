@@ -39,7 +39,7 @@ namespace KeywordsManagement.Data.Sql.Command.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Mode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CreatedByUserId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedByUserId = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
