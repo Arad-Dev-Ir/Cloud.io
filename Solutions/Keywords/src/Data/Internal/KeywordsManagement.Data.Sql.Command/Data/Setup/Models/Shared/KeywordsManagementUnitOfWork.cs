@@ -2,6 +2,6 @@
 
 using Cloud.Web.Data.Sql.Command;
 
-public class KeywordsManagementUnitOfWork(KeywordsManagementCommandContext context) :
+public sealed class KeywordsManagementUnitOfWork(KeywordsManagementCommandContext context) :
     UnitOfWork<KeywordsManagementCommandContext>(context)
 { }

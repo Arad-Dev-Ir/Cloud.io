@@ -1,3 +1,3 @@
-using Api = KeywordsManagement.Endpoint.APIs;
+using Endpoint = KeywordsManagement.Endpoint.APIs;
 
-Api.Host.Up(args);
+Endpoint.Host.Up(args);

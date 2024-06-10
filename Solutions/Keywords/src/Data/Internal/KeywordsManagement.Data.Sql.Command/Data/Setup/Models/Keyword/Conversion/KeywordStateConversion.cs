@@ -1,7 +1,7 @@
 ﻿namespace KeywordsManagement.Data.Sql.Keyword.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using KeywordState = Core.Keyword.Models.KeywordState;
+using Core.Keyword.Models;
 
 internal sealed class KeywordStateConversion : Conversion<KeywordState, string>
 {

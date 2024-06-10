@@ -1,7 +1,7 @@
 ﻿namespace KeywordsManagement.Core.Keyword.Contracts;
 
 using Cloud.Core.Models;
-using Keyword = Models.Keyword;
+using Models;
 
 public interface IKeywordCommandRepository
 {

@@ -4,8 +4,8 @@ using Microsoft.Data.SqlClient;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Cloud.Core;
-using Cloud.Core.Extensions.Serialization;
 using Cloud.Core.Models;
+using Cloud.Core.Extensions.Serialization;
 
 public sealed class KeywordCreationEventReceiver : BackgroundService
 {

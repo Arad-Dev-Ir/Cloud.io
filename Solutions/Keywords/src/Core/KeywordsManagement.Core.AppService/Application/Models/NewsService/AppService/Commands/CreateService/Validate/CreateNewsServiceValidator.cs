@@ -2,7 +2,7 @@
 
 using FluentValidation;
 using Cloud.Web.Core.AppService;
-using KeywordsManagement.Core.NewsService.Contracts;
+using Contracts;
 using Models;
 
 public sealed class CreateNewsServiceValidator : Validator<CreateNewsService>

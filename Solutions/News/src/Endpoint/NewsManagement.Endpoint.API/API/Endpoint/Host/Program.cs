@@ -1,3 +1,3 @@
-using Api = NewsManagement.Endpoint.APIs;
+using Endpoint = NewsManagement.Endpoint.APIs;
 
-Api.Host.Up(args);
+Endpoint.Host.Up(args);

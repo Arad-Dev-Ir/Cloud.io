@@ -3,8 +3,8 @@
 using Cloud.Web.Data.Sql.Command;
 using Core.NewsService.Contracts;
 using Sql.Commands;
-using Service = Core.NewsService.Models.NewsService;
+using Core.NewsService.Models;
 
 public class ServiceCommandRepository(KeywordsManagementCommandContext context) :
-    CommandRepository<KeywordsManagementCommandContext, Service>(context), INewsServiceCommandRepository
+    CommandRepository<KeywordsManagementCommandContext, NewsService>(context), INewsServiceCommandRepository
 { }

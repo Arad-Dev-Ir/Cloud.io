@@ -2,4 +2,10 @@
 
 using Cloud.Web.Core.Contract;
 
-public sealed record RegisterNews(string Title, string Description, string Body, IEnumerable<string> KeywordsCodes) : Command<long>;
+public sealed record RegisterNews : Command<long>
+{
+    public string Title { get; init; }
+    public string Description { get; init; }
+    public string Body { get; init; }
+    public IEnumerable<string> KeywordsCodes { get; init; }
+}

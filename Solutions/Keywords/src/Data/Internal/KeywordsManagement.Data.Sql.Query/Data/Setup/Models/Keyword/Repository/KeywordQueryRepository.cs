@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 using Core.Keyword.Contracts;
 using Sql.Queries;
 
-public class KeywordQueryRepository : QueryRepository<KeywordsManagementQueryContext>, IKeywordQueryRepository
+public class KeywordQueryRepository(KeywordsManagementQueryContext context) :
+    QueryRepository<KeywordsManagementQueryContext>(context), IKeywordQueryRepository
 {
-    public KeywordQueryRepository(KeywordsManagementQueryContext context) : base(context)
-    { }
-
     public async Task<PagedData<TitleAndModeSearchResult>> Query(TitleAndModeSearch query, CancellationToken cancellationToken)
     {
         var result = new PagedData<TitleAndModeSearchResult>();

@@ -1,7 +1,7 @@
 ﻿namespace KeywordsManagement.Data.Sql.NewsService.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using NewsServiceName = Core.NewsService.Models.NewsServiceName;
+using Core.NewsService.Models;
 
 public sealed class NewsServiceNameConversion : Conversion<NewsServiceName, string>
 {

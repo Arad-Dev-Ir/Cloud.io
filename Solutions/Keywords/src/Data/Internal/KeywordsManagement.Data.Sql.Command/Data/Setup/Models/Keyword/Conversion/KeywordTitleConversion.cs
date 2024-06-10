@@ -1,7 +1,7 @@
 ﻿namespace KeywordsManagement.Data.Sql.Keyword.Commands;
 
 using Cloud.Web.Data.Sql.Command;
-using KeywordTitle = Core.Keyword.Models.KeywordTitle;
+using Core.Keyword.Models;
 
 internal sealed class KeywordTitleConversion : Conversion<KeywordTitle, string>
 {

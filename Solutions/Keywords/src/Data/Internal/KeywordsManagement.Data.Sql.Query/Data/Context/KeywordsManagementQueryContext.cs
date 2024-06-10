@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Cloud.Web.Data.Sql.Query;
-using Keyword = Keyword.Queries.Keyword;
+using Keyword.Queries;
 
 public class KeywordsManagementQueryContext(DbContextOptions<KeywordsManagementQueryContext> options) : QueryContext(options)
 {
