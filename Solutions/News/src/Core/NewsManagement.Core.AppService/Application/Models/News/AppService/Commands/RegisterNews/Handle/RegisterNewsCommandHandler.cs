@@ -5,9 +5,9 @@ using Cloud.Web.Core.Contract;
 using Contracts;
 using Models;
 
-public sealed class RegisterNewsCommandHandler(INewsCommandRepository repo, IUnitOfWork unitOfWork) : CommandHandler<RegisterNews, long>
+public sealed class RegisterNewsCommandHandler(INewsCommandRepository repository, IUnitOfWork unitOfWork) : CommandHandler<RegisterNews, long>
 {
-    private readonly INewsCommandRepository _repo = repo;
+    private readonly INewsCommandRepository _repository = repository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public override async Task<CommandResponse<long>> ExecuteAsync(RegisterNews command, CancellationToken cancellationToken)
@@ -17,7 +17,7 @@ public sealed class RegisterNewsCommandHandler(INewsCommandRepository repo, IUni
         .ToList();
 
         var news = News.Instance(command.Title, command.Description, command.Body, keywordsCodes);
-        _repo.Add(news);
+        _repository.Add(news);
         await _unitOfWork.SaveAsync(cancellationToken);
 
         var result = await OkAsync(news.Id.Value);

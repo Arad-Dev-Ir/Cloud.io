@@ -4,16 +4,16 @@ using Cloud.Core.Models;
 
 public sealed record NewsDetailResult : Record
 {
-    public long Id { get; init; }
-    public string Title { get; init; }
-    public string Description { get; init; }
-    public string Body { get; init; }
-    public List<KeywordResult> Keywords { get; init; } = [];
-    public DateTime RegistrationDate { get; init; }
+    public required long Id { get; init; }
+    public required string Title { get; init; }
+    public required string Description { get; init; }
+    public required string Body { get; init; }
+    public required List<KeywordResult> Keywords { get; init; } = [];
+    public required DateTime RegistrationDate { get; init; }
 }
 
 public sealed record KeywordResult : Record
 {
-    public Guid Code { get; init; }
-    public string Title { get; init; }
+    public required Guid Code { get; init; }
+    public required string Title { get; init; }
 }

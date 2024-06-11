@@ -4,17 +4,17 @@ using Cloud.Web.Core.AppService;
 using Cloud.Web.Core.Contract;
 using Contracts;
 
-public sealed class ChangeKeywordTitleCommandHandler(IKeywordCommandRepository repo, IUnitOfWork unitOfWork) :
+public sealed class ChangeKeywordTitleCommandHandler(IKeywordCommandRepository repository, IUnitOfWork unitOfWork) :
     CommandHandler<ChangeKeywordTitle>
 {
-    private readonly IKeywordCommandRepository _repo = repo;
+    private readonly IKeywordCommandRepository _repository = repository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public override async Task<CommandResponse> ExecuteAsync(ChangeKeywordTitle command, CancellationToken cancellationToken)
     {
         CommandResponse? result;
         var id = command.Id;
-        var keyword = await _repo.GetGraphAsync(id, cancellationToken);
+        var keyword = await _repository.GetGraphAsync(id, cancellationToken);
         if (keyword is not null)
         {
             keyword.ChangeTitle(command.Title);

@@ -4,8 +4,8 @@ using Cloud.Core.Models;
 
 public sealed record NewsRecordsResult : Record
 {
-    public long Id { get; init; }
-    public string Title { get; init; }
-    public string Description { get; init; }
-    public DateTime RegistrationDate { get; init; }
+    public required long Id { get; init; }
+    public required string Title { get; init; }
+    public required string Description { get; init; }
+    public required DateTime RegistrationDate { get; init; }
 }

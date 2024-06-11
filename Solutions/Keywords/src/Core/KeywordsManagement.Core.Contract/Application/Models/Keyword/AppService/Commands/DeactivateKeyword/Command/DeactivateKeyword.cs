@@ -2,4 +2,7 @@
 
 using Cloud.Web.Core.Contract;
 
-public record DeactivateKeyword(long Id) : Command;
+public record DeactivateKeyword : Command
+{
+    public required long Id { get; init; }
+}

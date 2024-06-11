@@ -2,4 +2,8 @@
 
 using Cloud.Web.Core.Contract;
 
-public record TitleAndModeSearch(string Title, string? State) : PageQuery<PagedData<TitleAndModeSearchResult>>;
+public record TitleAndModeSearch : PageQuery<PagedData<TitleAndModeSearchResult>>
+{
+    public required string Title { get; init; }
+    public string? State { get; init; }
+}

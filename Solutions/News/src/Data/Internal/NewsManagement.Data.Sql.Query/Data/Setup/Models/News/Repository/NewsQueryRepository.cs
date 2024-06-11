@@ -41,13 +41,15 @@ public class NewsQueryRepository(NewsManagementQueryContext context) :
 
     public async Task<PagedData<NewsRecordsResult>> Query(NewsRecords query, CancellationToken cancellationToken)
     {
-        var result = new PagedData<NewsRecordsResult>();
+        PagedData<NewsRecordsResult> result;
         var lookup = Context.News.AsQueryable();
 
-        result.Records = await lookup
+        var pageSize = query.PageSize;
+
+        var items = await lookup
         .OrderBy(query.OrderBy, query.Ascending)
         .Skip(query.SkipCount)
-        .Take(query.PageSize)
+        .Take(pageSize)
         .Select(e =>
         new NewsRecordsResult
         {
@@ -57,7 +59,9 @@ public class NewsQueryRepository(NewsManagementQueryContext context) :
             RegistrationDate = e.CreatedDateTime
         })
         .ToListAsync(cancellationToken);
-        result.TotalCount = query.NeedTotalCount ? lookup.Count() : default;
+
+        var totalCount = query.NeedTotalCount ? lookup.Count() : default;
+        result = new() { Items = items, TotalCount = totalCount, Page = query.Page, PageSize = pageSize };
 
         return result;
     }

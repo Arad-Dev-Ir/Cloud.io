@@ -29,7 +29,7 @@ public static class Extension
         .AddInMemoryCache()
         .AddDbContext(configuration)
         .AddDiscoveryClient(configuration)
-        .AddHostedService<KeywordCreationEventPublisher>()
+        //.AddHostedService<KeywordCreationEventPublisher>()
         .AddResponseCompression()
         .AddSwaggerGen();
 

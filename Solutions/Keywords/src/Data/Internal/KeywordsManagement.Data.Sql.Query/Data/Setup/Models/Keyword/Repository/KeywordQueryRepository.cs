@@ -13,7 +13,7 @@ public class KeywordQueryRepository(KeywordsManagementQueryContext context) :
 {
     public async Task<PagedData<TitleAndModeSearchResult>> Query(TitleAndModeSearch query, CancellationToken cancellationToken)
     {
-        var result = new PagedData<TitleAndModeSearchResult>();
+        PagedData<TitleAndModeSearchResult> result;
         var lookup = Context.Keywords.AsQueryable();
 
         var title = query.Title;
@@ -24,22 +24,23 @@ public class KeywordQueryRepository(KeywordsManagementQueryContext context) :
         var modeCondition = state.IsNotEmpty();
         lookup = lookup.Where(modeCondition, e => e.State == state);
 
-        result.Records = await lookup
-        .OrderBy(query.OrderBy, query.Ascending)
-        .Skip(query.SkipCount)
-        .Take(query.PageSize)
-        .Select(e => new TitleAndModeSearchResult
-        {
-            Id = e.Id,
-            Code = e.Code,
-            Title = e.Title,
-            State = e.State,
-        })
-        .ToListAsync(cancellationToken);
+        var pageSize = query.PageSize;
 
-        var a = result.GetHashCode();
-        result.TotalCount = query.NeedTotalCount ? lookup.Count() : default;
-        var b = result.GetHashCode();
+        var items = await lookup
+         .OrderBy(query.OrderBy, query.Ascending)
+         .Skip(query.SkipCount)
+         .Take(pageSize)
+         .Select(e => new TitleAndModeSearchResult
+         {
+             Id = e.Id,
+             Code = e.Code,
+             Title = e.Title,
+             State = e.State,
+         })
+         .ToListAsync(cancellationToken);
+
+        var totalCount = query.NeedTotalCount ? lookup.Count() : default;
+        result = new() { Items = items, TotalCount = totalCount, Page = query.Page, PageSize = pageSize };
 
         return result;
     }
