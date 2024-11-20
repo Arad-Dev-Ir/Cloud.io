@@ -1,0 +1,50 @@
+@KeywordsHostAddress = https://localhost:7001/api/keywords
+
+POST {{KeywordsHostAddress}}/define-keyword
+Content-Type: application/json
+
+{
+    "Title": "Network"
+}
+
+###
+
+Get {{KeywordsHostAddress}}/search
+Content-Type: application/json
+
+{
+  "Title": "Network",
+  "Page" : 1,
+  "PageSize" : 10,
+  "OrderBy": "Id",
+  "Ascending" : true,
+  "NeedTotalCount" : true
+}
+
+###
+
+PUT {{KeywordsHostAddress}}/edit-keyword-title
+Content-Type: application/json
+
+{
+    "Id": "1",
+    "Title": "Tech"
+}
+
+###
+
+POST {{KeywordsHostAddress}}/activate-keyword
+Content-Type: application/json
+
+{
+    "Id": 1
+}
+
+###
+
+POST {{KeywordsHostAddress}}/deactivate-keyword
+Content-Type: application/json
+
+{
+    "Id": 1
+}

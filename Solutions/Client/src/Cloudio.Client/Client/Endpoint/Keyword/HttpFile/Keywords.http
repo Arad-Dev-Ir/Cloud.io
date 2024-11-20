@@ -1,0 +1,50 @@
+@ClientHostAddress = https://localhost:9901
+
+POST {{ClientHostAddress}}/keywords/define-keyword
+Content-Type: application/json
+
+{
+    "Title": "Network"
+}
+
+###
+
+PUT {{ClientHostAddress}}/keywords/edit-keyword-title
+Content-Type: application/json
+
+{
+  "Id": "1",
+  "Title": "Cloud"
+}
+
+###
+
+POST {{ClientHostAddress}}/keywords/activate-keyword
+Content-Type: application/json
+
+{
+    "Id": 1
+}
+
+###
+
+POST {{ClientHostAddress}}/keywords/deactivate-keyword
+Content-Type: application/json
+
+{
+    "Id": 1
+}
+
+###
+
+Get {{ClientHostAddress}}/keywords/search
+Content-Type: application/json
+
+{
+  "Title": "Network",
+  "Page" : 1,
+  "PageSize" : 10,
+  "OrderBy": "Id",
+  "Ascending" : true,
+  "NeedTotalCount" : true
+}

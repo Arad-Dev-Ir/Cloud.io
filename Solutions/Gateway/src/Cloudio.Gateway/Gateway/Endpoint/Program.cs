@@ -1,0 +1,1 @@
+Cloudio.Gateway.Endpoint.Host.Up(args);

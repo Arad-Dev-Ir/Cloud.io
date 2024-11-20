@@ -1,0 +1,1 @@
+NewsManagement.Endpoint.Host.Up(args);

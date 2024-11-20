@@ -1,0 +1,20 @@
+@NewsHostAddress = https://localhost:7011/api/news
+
+POST {{NewsHostAddress}}/register-news
+Content-Type: application/json
+
+{
+    "Title": "Cloud Computing",
+    "Description": "Everything about Cloud Computing",
+    "Body": "Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. Large clouds often have functions distributed over multiple locations.",
+    "KeywordsCodes":
+    [
+        "fd6c3615-aa78-43ab-8f84-13c8b9a26007"
+    ]
+}
+
+###
+
+@id = 1
+GET {{NewsHostAddress}}/get-news-detail/{{id}}
+Content-Type: application/json

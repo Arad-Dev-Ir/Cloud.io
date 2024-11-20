@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\..\Shared\src\Cloudio.NetCore.App\Cloudio.NetCore.App.csproj" />
+		<ProjectReference Include="..\NewsManagement.Core.Domain\NewsManagement.Core.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
